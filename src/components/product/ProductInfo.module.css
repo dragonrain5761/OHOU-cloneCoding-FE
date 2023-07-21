@@ -1,0 +1,49 @@
+.ProductInfo {
+  display: flex;
+  width: 100%;
+  height: 1645px;
+  margin-top: 30px;
+}
+
+.ProductInfo_inner {
+  width: 55%;
+  margin-right: 30px;
+}
+
+.ProductInfo_inner p {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.ProductInfo_inner div {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.Image_wrapper {
+  width: 100%;
+  height: 640px;
+  background-color: #f2f2f2;
+  margin-bottom: 12px;
+}
+
+.Order_container {
+  width: calc(45% - 30px);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.Order_container > div select {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.Order_container > div button {
+  font-size: 17px;
+  margin-right: 6px;
+  padding: 17px;
+  background-color: #35c5f0;
+  color: #fff;
+}

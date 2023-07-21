@@ -1,23 +1,21 @@
 .Product {
-  max-width: 1280px;
-  margin: 0 auto;
   display: flex;
 }
 
 .Image_wrapper {
   width: 50%;
-  padding-bottom: 50%;
+  height: 640px;
   background-color: #f2f2f2;
+  margin-right: 30px;
 }
 
 .Product > div:nth-of-type(2) {
-  width: 50%;
-  padding: 0 10px;
+  width: calc(50% - 30px);
 }
 
 .Title_container p {
   font-size: 22px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
 .Title_container p:nth-child(2) {
