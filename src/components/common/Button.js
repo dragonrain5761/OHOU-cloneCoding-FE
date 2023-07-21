@@ -1,11 +1,10 @@
 import styled, { css } from "styled-components";
-import theme from "../../lib/styles/theme";
 
 const Button = ({ children, size, color, ...rest }) => {
   return (
-    <styledButton size={size} color={color} {...rest}>
+    <StyledButton size={size} color={color} {...rest}>
       {children}
-    </styledButton>
+    </StyledButton>
   );
 };
 
@@ -17,7 +16,7 @@ const sizes = {
     width: 35px;
   `,
   small: css`
-    height: 30px;
+    height: 38px;
     width: 80px;
   `,
   medium: css`
@@ -40,21 +39,26 @@ const sizes = {
 
 const colors = {
   primary: css`
-    background-color: ${theme.primaryColor};
+    background-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
   `,
   secondary: css`
-    background-color: ${theme.lightGrayColor};
+    background-color: ${(props) => props.theme.lightGrayColor};
+  `,
+  default: css`
+    background-color: white;
   `,
 };
 
-const styledButton = styled.button`
+const StyledButton = styled.button`
   background-color: ${(props) => props.theme.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   padding: 5px;
+  min-width: 55px;
 
-  ${(props) => sizes[props.size] || "default"}
-  ${(props) => colors[props.color]}
+  ${(props) => sizes[props.size] || sizes.default}
+  ${(props) => colors[props.color] || colors.default}
 `;
