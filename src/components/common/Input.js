@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import theme from "../../lib/styles/theme";
 
 const Input = ({ w, h, sizes, color, ...rest }) => {
-  return <styledInput w={w} h={h} {...rest} />;
+  return <StyledInput w={w} h={h} {...rest} />;
 };
 
 export default Input;
@@ -24,25 +24,28 @@ const sizes = {
 
 const colors = {
   primary: css`
-    background-color: ${theme.primaryColor};
+    background-color: ${theme.whiteColor};
   `,
   secondary: css`
     background-color: ${theme.lightGrayColor};
   `,
 };
 
-const styledInput = styled.input`
+const StyledInput = styled.input`
   display: ${theme.flexCenter};
   font-size: 1rem;
+  border-radius: 5px;
+  padding-left: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
   ${(props) =>
     sizes[props.size] ||
     css`
       height: ${props.h};
       width: ${props.w};
     `}
-  ${(props) =>
-    sizes[props.color] ||
-    css`
-      background-color: none;
-    `}
+  ${(props) => colors[props.color] || colors.primary}
 `;

@@ -1,5 +1,43 @@
-const MainBanner = () => {
-  return <div>MainBanner</div>;
+import { Link } from "react-router-dom";
+import Carousel from "../common/Carousel";
+import MainBannerBlock from "./MainBanner.style";
+
+const MainBanner = ({
+  exampleMain,
+  currImgIndex,
+  exampleSide,
+  setCurrImgIndex,
+  onIncreaseIdx,
+  onDecreaseIdx,
+}) => {
+  if (!exampleMain) {
+    return null;
+  }
+  return (
+    <MainBannerBlock src={exampleMain.postImg}>
+      <div className="mainBanner">
+        <Link>
+          <div className="mainPost"></div>
+        </Link>
+        <div className="content">
+          <h1> {exampleMain.contents}</h1>
+          <h5>{exampleMain.nickname}</h5>
+        </div>
+      </div>
+      <div className="sideBanner">
+        <Carousel
+          postImages={exampleSide}
+          currImgIndex={currImgIndex}
+          setCurrImgIndex={setCurrImgIndex}
+          onIncreaseIdx={onIncreaseIdx}
+          onDecreaseIdx={onDecreaseIdx}
+        />
+        <p className="imgLength">
+          {currImgIndex + 1}/{exampleSide.length}+
+        </p>
+      </div>
+    </MainBannerBlock>
+  );
 };
 
 export default MainBanner;

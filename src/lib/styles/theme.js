@@ -2,12 +2,12 @@ import { css } from "styled-components";
 
 const colors = {
   whiteColor: "#ffffff",
-  lightGrayColor: "#F6F9FA",
+  lightGrayColor: "#efefef",
   mediumGrayColor: "#939393",
   darkGrayColor: "#4a4a4a",
   darkColor: "#000000",
 
-  primaryColor: "#34C5EF",
+  primaryColor: "#35C5F0",
 };
 
 const flexCenter = css`
