@@ -1,9 +1,142 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "postId": 1,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 2,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 3,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 4,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 5,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 6,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 7,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    },
+    {
+      "postId": 8,
+      "nickname": "ohous",
+      "contents": "귀엽고 몽글몽글한 새 두마리와 곰돌이, 토끼로 꾸며본 내방구석🤍 이제 #데스크테리어 에서도 당당하게 휴지통 딱 두구 사진찍자구요 🤍",
+      "postImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/168981975386716528.jpeg?w=1440",
+      "commentSize": 8,
+      "likeSize": 89,
+      "createdAt": "10분 전",
+      "modifiedAt": "10분 전"
+    }
+  ],
+  "items": [
+    {
+      "itemId": 1,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 2,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 3,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 4,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 5,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 6,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 7,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
+    },
+    {
+      "itemId": 8,
+      "itemName": "",
+      "title": "[오늘의딜] 쿨쿨 기능성 듀라론 냉감 고정밴딩 여름 침대패드 SS/Q/K-3컬러",
+      "price": 32900,
+      "itemImg": "https://ohou.se/exhibitions/10162"
     }
   ]
 }

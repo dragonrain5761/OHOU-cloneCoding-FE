@@ -57,7 +57,6 @@ const StyledButton = styled.button`
   justify-content: center;
   border-radius: 8px;
   padding: 5px;
-  min-width: 55px;
 
   ${(props) => sizes[props.size] || sizes.default}
   ${(props) => colors[props.color] || colors.default}

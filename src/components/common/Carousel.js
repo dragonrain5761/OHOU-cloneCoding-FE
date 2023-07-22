@@ -65,7 +65,6 @@ const StyledCarousel = styled.div`
     &:hover {
       .imgCarousel {
         transition: transform 0.2s ease 0s;
-        transform: scale(1.015);
       }
       .icon {
         height: 42px;

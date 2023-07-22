@@ -4,11 +4,11 @@ import TemplateBlock from "./Template.style";
 
 const Template = ({ children, header, footer }) => {
   return (
-    <TemplateBlock>
+    <>
       {header && <Header />}
-      {children}
+      <TemplateBlock>{children}</TemplateBlock>
       {footer && <Footer />}
-    </TemplateBlock>
+    </>
   );
 };
 

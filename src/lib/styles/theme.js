@@ -4,10 +4,16 @@ const colors = {
   whiteColor: "#ffffff",
   lightGrayColor: "#efefef",
   mediumGrayColor: "#939393",
-  darkGrayColor: "#4a4a4a",
+  darkGrayColor: "#565656",
   darkColor: "#000000",
 
   primaryColor: "#35C5F0",
+};
+
+const breakpoints = {
+  mobile: "375px",
+  tablet: "768px",
+  laptop: "1024px",
 };
 
 const flexCenter = css`
@@ -24,6 +30,7 @@ const flexCenterColumn = css`
 
 const theme = {
   ...colors,
+  breakpoints,
   flexCenter,
   flexCenterColumn,
 };

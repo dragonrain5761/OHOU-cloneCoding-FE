@@ -14,10 +14,10 @@ const MainBanner = ({
     return null;
   }
   return (
-    <MainBannerBlock src={exampleMain.postImg}>
-      <div className="mainBanner">
-        <Link>
-          <div className="mainPost"></div>
+    <MainBannerBlock>
+      <div className="mainPost">
+        <Link to="/">
+          <img src={exampleMain.postImg} alt="main-banner" />
         </Link>
         <div className="content">
           <h1> {exampleMain.contents}</h1>
