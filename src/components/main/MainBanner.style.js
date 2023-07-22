@@ -2,26 +2,43 @@ import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 
 const MainBannerBlock = styled.div`
-  ${theme.flexCenter}
-  width: 1250px;
-  margin: 0 auto;
-  margin-top: 2rem;
-  gap: 20px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 30px;
+  max-width: 900px;
+  overflow: hidden;
 
   .mainPost {
-    border-radius: 4px;
-    width: 700px;
-    height: 430px;
+    flex: 2;
+    position: relative;
     overflow: hidden;
-    background-image: url(${(props) => props.src});
-    background-size: contain;
-    background-repeat: no-repeat;
+    border-radius: 4px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .content {
+      position: absolute;
+      bottom: 4%;
+      left: 4%;
+      color: ${theme.whiteColor};
+      h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+      h5 {
+        margin: 10px;
+        font-size: 1.3rem;
+      }
+    }
   }
+
   .sideBanner {
-    width: 223px;
-    height: 430px;
-    border-radius: 6px;
+    flex: 1;
+    margin-left: 20px;
+    border-radius: 4px;
+    overflow: hidden;
     position: relative;
 
     .imgLength {
@@ -34,25 +51,11 @@ const MainBannerBlock = styled.div`
       bottom: 0;
       right: 0;
       margin: 10px;
-      padding: 3px;
+      padding-left: 5px;
       font-size: 0.9rem;
       font-weight: bold;
       letter-spacing: 0.1rem;
       border-radius: 13px;
-    }
-  }
-  .content {
-    position: absolute;
-    bottom: 4%;
-    left: 15%;
-    color: ${theme.whiteColor};
-    h1 {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    h5 {
-      margin: 10px;
-      font-size: 1.3rem;
     }
   }
 `;
