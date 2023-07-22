@@ -138,5 +138,23 @@
       "price": 32900,
       "itemImg": "https://ohou.se/exhibitions/10162"
     }
+  ],
+  "signup": [
+    {
+      "email": "",
+      "emailSelect": "",
+      "password": "",
+      "pwCheck": "",
+      "nickname": ""
+    }
+  ],
+  "login": [
+    {
+      "email": "",
+      "emailSelect": "",
+      "password": "",
+      "pwCheck": "",
+      "nickname": ""
+    }
   ]
 }
