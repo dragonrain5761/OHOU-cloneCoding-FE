@@ -1,12 +1,12 @@
 import axios from "axios";
-import { defalutInstance } from "./axios";
+import { defaultInstance } from "./axios";
 
 const REACT_API_URL = process.env.REACT_APP_API_URL;
 
 // 회원가입 요청을 보내는 함수
 export const registerUser = async (userData) => {
   try {
-    const response = await defalutInstance().post(
+    const response = await defaultInstance().post(
       `${REACT_API_URL}/signup`,
       userData
     );
@@ -20,7 +20,7 @@ export const registerUser = async (userData) => {
 // 로그인 요청을 보내는 함수
 export const loginUser = async (userData) => {
   try {
-    const response = await defalutInstance().post(
+    const response = await defaultInstance().post(
       `${REACT_API_URL}/login`,
       userData
     );

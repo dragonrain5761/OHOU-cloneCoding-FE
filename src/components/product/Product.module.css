@@ -1,37 +1,54 @@
 .Product {
   display: flex;
+  margin: 20px;
 }
 
 .Image_wrapper {
   width: 50%;
   height: 640px;
   background-color: #f2f2f2;
-  margin-right: 30px;
+  margin-right: 20px;
+  overflow: hidden;
+}
+
+.Image_wrapper img {
+  height: 100%;
 }
 
 .Product > div:nth-of-type(2) {
   width: calc(50% - 30px);
 }
 
-.Title_container p {
-  font-size: 22px;
-  margin-bottom: 12px;
+.Title_container {
+  margin-top: 20px;
 }
 
-.Title_container p:nth-child(2) {
+.Title_container p:nth-of-type(-n+2) {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.Title_container p:nth-of-type(3) {
   font-size: 32px;
+}
+
+.Order_container {
+  margin-top: 20px;
 }
 
 .Order_container select {
   width: 100%;
   height: 40px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border-radius: 4px;
 }
 
 .Order_container > div button {
-  font-size: 17px;
-  margin-right: 6px;
-  padding: 13px 10px 14px;
+  font-size: 16px;
+  margin-right: 8px;
+  padding: 16px 32px;
   background-color: #35c5f0;
   color: #fff;
+  border-radius: 4px;
 }
