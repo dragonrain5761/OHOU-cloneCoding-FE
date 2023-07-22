@@ -68,10 +68,10 @@ const Register = ({
         <label className="registerlabel">비밀번호 확인</label>
         <input
           type="password"
-          name="confirmPassword"
+          name="pwCheck"
           className="pwInput"
           placeholder="비밀번호 확인"
-          value={formData.confirmPassword}
+          value={formData.pwCheck}
           onChange={handleChange}
         ></input>
       </div>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 
 export const LoginBlock = styled.div`
+  width: 100%;
   background-color: #fafafa;
 
   .loginBox {

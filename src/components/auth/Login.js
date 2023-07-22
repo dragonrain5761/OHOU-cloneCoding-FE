@@ -1,5 +1,4 @@
 import React from "react";
-import { LoginBlock } from "./Login.style";
 import logo from "../../assets/transparent-logo.png";
 
 const Login = ({ formData, handleChange, handleSubmit }) => {

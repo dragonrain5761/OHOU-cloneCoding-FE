@@ -1,5 +1,8 @@
+import React from "react";
+import Help from "../../components/help/Help";
+
 const HelpContainer = () => {
-  return <div>HelpContainer</div>;
+  return <Help></Help>;
 };
 
 export default HelpContainer;
