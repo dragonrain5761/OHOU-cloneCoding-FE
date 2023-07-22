@@ -1,5 +1,8 @@
+import React from "react";
+import RegisterContainer from "../../containers/auth/RegisterContainer";
+
 const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return <RegisterContainer></RegisterContainer>;
 };
 
 export default RegisterPage;
