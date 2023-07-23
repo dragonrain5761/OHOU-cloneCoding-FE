@@ -4,7 +4,7 @@ import theme from "../../lib/styles/theme";
 const MainBannerBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 20px 30px;
+  margin-top: 6.5rem;
   max-width: 900px;
   overflow: hidden;
 
