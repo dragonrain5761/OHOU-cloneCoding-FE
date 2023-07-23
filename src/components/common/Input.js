@@ -18,7 +18,7 @@ const sizes = {
   `,
   large: css`
     height: 45px;
-    width: 135px;
+    width: 600px;
   `,
 };
 
