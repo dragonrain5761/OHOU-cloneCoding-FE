@@ -8,7 +8,7 @@ export const getPosts = async () => {
 
 export const getPost = async (postId) => {
   const api = defaultInstance();
-  const res = await api.get(`/post/${postId}`);
+  const res = await api.get(`/posts/${postId}`); // api 연결 후 post로 변경
   return res;
 };
 

@@ -6,12 +6,14 @@ import theme from "../../lib/styles/theme";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
+import { useNavigate } from "react-router-dom";
 
 const PostListContainer = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const MAXPAGE = 10; // 더 알아보쟈
   const SIZE = 8;
 
@@ -50,7 +52,9 @@ const PostListContainer = () => {
   // if (isError) return <h3>ERROR!</h3>;
   // if (isLoading) return <h3>ERROR!</h3>;
 
-  const onClickHandler = () => {};
+  const onClickHandler = (id) => {
+    navigate(`/post/${id}`);
+  };
 
   const onIncreasePage = () => {
     setCurrentPage((prev) => prev + 1);
@@ -66,7 +70,7 @@ const PostListContainer = () => {
       <ul className="postsContainer">
         {/* {data?.map((post) => (  useQuery 사용 후 바꾸기*/}
         {posts.map((post) => (
-          <li key={post.postId} onClick={onClickHandler}>
+          <li key={post.postId} onClick={() => onClickHandler(post.postId)}>
             <PostListItem post={post} />
           </li>
         ))}
@@ -97,14 +101,17 @@ const HomeListContainerBlock = styled.div`
   ${theme.flexCenterColumn}
   max-width: 1050px;
   height: auto;
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 30px 40px;
-  gap: 10px;
+  gap: 20px;
   h1 {
     width: 100%;
     margin-left: 50px;
     font-size: 1.125rem;
     font-weight: bold;
+  }
+  li {
+    cursor: pointer;
   }
   .postsContainer {
     width: 100%;

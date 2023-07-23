@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 const colors = {
   whiteColor: "#ffffff",
-  lightGrayColor: "#efefef",
+  lightGrayColor: "#e2e2e2",
   mediumGrayColor: "#939393",
   darkGrayColor: "#565656",
   darkColor: "#000000",
