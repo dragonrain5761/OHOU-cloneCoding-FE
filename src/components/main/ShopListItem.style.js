@@ -3,16 +3,11 @@ import theme from "../../lib/styles/theme";
 
 const ShopListItemBlock = styled.div`
   ${theme.flexCenterColumn}
-  flex: 1 1 170px;
-  /* width: 230px; */
-  max-width: 230px;
-  height: 380px;
-  padding: 2px;
   overflow: hidden;
   position: relative;
   .itemImg {
-    width: 100%;
-    height: 235px;
+    width: 95%;
+    margin-bottom: 1rem;
     img {
       width: 100%;
       object-fit: contain;
@@ -20,8 +15,10 @@ const ShopListItemBlock = styled.div`
     }
   }
   .contents {
+    width: 100%;
+    min-height: 150px;
+    padding: 0 0.6rem;
     .itemName {
-      width: 220px;
       font-size: 0.7rem;
       color: ${theme.darkGrayColor};
     }
@@ -34,6 +31,7 @@ const ShopListItemBlock = styled.div`
       display: flex;
       width: 220px;
       gap: 5px;
+      margin-top: 1rem;
 
       span {
         color: ${theme.primaryColor};
@@ -45,7 +43,7 @@ const ShopListItemBlock = styled.div`
       img {
         position: absolute;
         width: 80px;
-        bottom: -9px;
+        bottom: 10px;
       }
     }
   }
