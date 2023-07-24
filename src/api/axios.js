@@ -10,6 +10,7 @@ const defaultInstance = () => {
 
 const authInstance = () => {
   const token = localStorage.getItem("token");
+  console.log("token", token);
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
@@ -17,6 +18,7 @@ const authInstance = () => {
       //Refresh: refresh
     },
   });
+  console.log("instance", instance);
   return instance;
 };
 

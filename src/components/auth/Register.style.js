@@ -12,6 +12,16 @@ export const RegisterBlock = styled.section`
     padding: 60px 0px;
     /* border: 1px solid ${(props) => props.theme.mediumGrayColor}; */
 
+    > div {
+      margin: 30px auto 30px 0;
+      width: 360px;
+      border-bottom: 1px solid ${(props) => props.theme.lightGrayColor};
+      > h1 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
     ${theme.flexCenterColumn}
   }
 
@@ -63,7 +73,6 @@ export const RegisterBlock = styled.section`
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
     display: block;
-    box-sizing: border-box;
     height: 40px;
     width: 100%;
     padding: 0 15px;
@@ -72,6 +81,15 @@ export const RegisterBlock = styled.section`
     border: 1px solid ${(props) => props.theme.lightGrayColor};
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.darkColor};
+    outline: none;
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .emailSeparator {
@@ -91,11 +109,17 @@ export const RegisterBlock = styled.section`
     padding: 0 15px;
     line-height: 40px;
     border-radius: 4px;
-    border: 1px solid #dbdbdb;
-    background-color: #fff;
+    border: 1px solid ${(props) => props.theme.lightGrayColor};
     color: ${(props) => props.theme.darkColor};
-    -webkit-appearance: none;
     appearance: none;
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .emailButton {
@@ -103,13 +127,12 @@ export const RegisterBlock = styled.section`
     width: 100%;
     height: 45px;
     padding: 0px;
-    background: ${(props) => props.theme.lightGrayColor};
-    color: ${(props) => props.theme.mediumGrayColor};
-    border-color: ${(props) => props.theme.darkColor};
+    background: ${(props) => props.theme.whiteGrayColor};
+    color: ${(props) => props.theme.lightGrayColor};
+    border: 0.1px solid ${(props) => props.theme.lightGrayColor};
     font-size: 17px;
     min-height: 50px;
     font-weight: 700;
-    text-decoration: none;
     text-align: center;
     transition: color 0.1s, background-color 0.1s, border-color 0.1s;
     border-radius: 4px;
@@ -120,7 +143,6 @@ export const RegisterBlock = styled.section`
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
     display: block;
-    box-sizing: border-box;
     height: 40px;
     width: 100%;
     padding: 0 15px;
@@ -129,13 +151,20 @@ export const RegisterBlock = styled.section`
     border: 1px solid ${(props) => props.theme.lightGrayColor};
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.darkColor};
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .nameInput {
     font-size: 15px;
     transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
     display: block;
-    box-sizing: border-box;
     height: 40px;
     width: 100%;
     padding: 0 15px;
@@ -144,6 +173,14 @@ export const RegisterBlock = styled.section`
     border: 1px solid ${(props) => props.theme.lightGrayColor};
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.darkColor};
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .submitButton {
@@ -151,9 +188,9 @@ export const RegisterBlock = styled.section`
     width: 100%;
     height: 45px;
     padding: 0px;
-    background-color: #35c5f0;
-    border-color: #35c5f0;
-    color: #fff;
+    background-color: ${(props) => props.theme.primaryColor};
+    border-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
     font-size: 17px;
     min-height: 50px;
     font-weight: 700;
@@ -162,5 +199,21 @@ export const RegisterBlock = styled.section`
     transition: color 0.1s, background-color 0.1s, border-color 0.1s;
     border-radius: 4px;
     cursor: pointer;
+    &:hover {
+      background-color: ${(props) => props.theme.darkprimaryColor};
+    }
+  }
+
+  .registerHelp {
+    color: ${(props) => props.theme.darkColor};
+    font-size: 15px;
+    text-align: center;
+    margin-top: 30px;
+
+    > a {
+      text-decoration: underline;
+      font-weight: bold;
+      padding-left: 10px;
+    }
   }
 `;

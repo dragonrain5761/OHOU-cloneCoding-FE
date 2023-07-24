@@ -1,11 +1,15 @@
 import React from "react";
 import logo from "../../assets/transparent-logo.png";
+import Input, { StyledInput } from "../common/Input";
+import { Link } from "react-router-dom";
 
 const Login = ({ formData, handleChange, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="loginBox">
-        <img className="loginImg" src={logo} alt="logo" />
+        <Link to="/">
+          <img className="loginImg" src={logo} alt="logo" />
+        </Link>
         <div className="inputDiv">
           <input
             className="loginEmailInput"
@@ -30,9 +34,16 @@ const Login = ({ formData, handleChange, handleSubmit }) => {
           로그인
         </button>
         <section className="loginSection">
-          <span>비밀번호 재설정</span>
-          <span>회원가입</span>
+          <Link to="/help">
+            <span>비밀번호 재설정</span>
+          </Link>
+          <Link to="/register">
+            <span>회원가입</span>
+          </Link>
         </section>
+        <Link to="/help">
+          <span className="loginHelpSpan">로그인에 문제가 있으신가요?</span>
+        </Link>
       </div>
     </form>
   );

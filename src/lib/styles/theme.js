@@ -2,12 +2,14 @@ import { css } from "styled-components";
 
 const colors = {
   whiteColor: "#ffffff",
+  whiteGrayColor: "#fafafa",
   lightGrayColor: "#e2e2e2",
   mediumGrayColor: "#939393",
   darkGrayColor: "#565656",
   darkColor: "#000000",
 
   primaryColor: "#35C5F0",
+  darkprimaryColor: "#09addb",
 };
 
 const breakpoints = {
