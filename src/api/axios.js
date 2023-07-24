@@ -14,6 +14,7 @@ const authInstance = () => {
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
       Authorization: `Bearer ${token}`,
+      //Refresh: refresh
     },
   });
   return instance;

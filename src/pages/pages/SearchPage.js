@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import Header from "../../components/layout/Header";
-
 import { useSearchQuery } from "../../hooks/apis/useSearchQuery";
 import { getSearchItems } from "../../api/item";
-import axios from "axios";
-import { getPosts } from "../../api/post";
 import ShopListContainer from "../../containers/main/ShopListContainer";
 
 const SearchPage = () => {

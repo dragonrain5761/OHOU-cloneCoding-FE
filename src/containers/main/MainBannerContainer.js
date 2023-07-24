@@ -56,7 +56,6 @@ const MainBannerContainer = () => {
       exampleMain={exampleMain}
       currImgIndex={currImgIndex}
       exampleSide={exampleSide}
-      setCurrImgIndex={setCurrImgIndex}
       onIncreaseIdx={onIncreaseIdx}
       onDecreaseIdx={onDecreaseIdx}
     />

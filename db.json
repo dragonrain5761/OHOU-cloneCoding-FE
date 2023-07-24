@@ -15,7 +15,8 @@
           "commentId": 1,
           "nickname": "nayoung36",
           "comment": "우와 멋져요",
-          "createdAt": "10분 전"
+          "createdAt": "10분 전",
+          "hasLikedComment": true
         },
         {
           "commentId": 2,
@@ -27,7 +28,8 @@
           "commentId": 3,
           "nickname": "nayoung36",
           "comment": "우와 멋져요",
-          "createdAt": "10분 전"
+          "createdAt": "10분 전",
+          "hasLikedComment": true
         }
       ]
     },
