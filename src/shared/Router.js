@@ -12,6 +12,7 @@ import PostPage from "../pages/pages/PostPage";
 const Router = () => {
   useEffect(() => {}, []);
 
+  //template page 만들어서 outlet 으로 children보여주기
   return (
     <BrowserRouter>
       <Routes>

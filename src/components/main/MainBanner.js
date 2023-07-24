@@ -28,7 +28,6 @@ const MainBanner = ({
         <Carousel
           postImages={exampleSide}
           currImgIndex={currImgIndex}
-          setCurrImgIndex={setCurrImgIndex}
           onIncreaseIdx={onIncreaseIdx}
           onDecreaseIdx={onDecreaseIdx}
         />

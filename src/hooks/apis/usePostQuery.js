@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deletePost, getPost, likePost, updatePost } from "../../api/post";
 
+// localsthorage 여부에 따라 api 다르게?
 export const PostQueryKey = "post";
 export const usePostQuery = (postId) => {
   return useQuery([PostQueryKey, postId], getPost(postId), {
@@ -12,7 +13,7 @@ export const usePostQuery = (postId) => {
 export const useUpdatePostMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation(updatePost, {
+  const { mutate } = useMutation(updatePost, {
     onSuccess: (data) => {
       queryClient.setQueryData(PostQueryKey, (prevData) => ({
         ...prevData,
@@ -20,15 +21,17 @@ export const useUpdatePostMutation = () => {
       }));
     },
   });
+  return mutate;
 };
 
 export const useDeletePostMutation = () => {
-  return useMutation(deletePost);
+  const { mutate } = useMutation(deletePost);
+  return mutate;
 };
 
 export const useLikePostMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(likePost, {
+  const { mutate } = useMutation(likePost, {
     //바로 상태 반영?
     onSuccess: (data) => {
       queryClient.setQueryData(PostQueryKey, (prevData) => ({
@@ -37,4 +40,5 @@ export const useLikePostMutation = () => {
       }));
     },
   });
+  return mutate;
 };

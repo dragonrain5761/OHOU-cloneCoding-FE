@@ -5,6 +5,7 @@ import theme from "../../lib/styles/theme";
 import Input from "../../components/common/Input";
 import profile from "../../assets/profile.png";
 import Button from "../../components/common/Button";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 const CommentsContainer = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -17,8 +18,14 @@ const CommentsContainer = ({ postId }) => {
 
   // const { data, isLoading, isError } = useQuery("post", getPost(postId), {
   //   staleTime: 3000,
-  //   keepPreviousData: true, //지난 데이터도 캐싱유지
+  //   keepPreviousData: true,
   // });
+
+  // const updateMutate = useUpdateCommentMutation();
+
+  // const deleteMutate = useDeleteCommenttMutation();
+
+  // const likeMutate = useLikeCommentMutation();
 
   // if (isError) return <h3>ERROR!</h3>;
   // if (isLoading) return <h3>ERROR!</h3>;
@@ -36,6 +43,12 @@ const CommentsContainer = ({ postId }) => {
     //postComment(postId, {comment : text})
     setText("");
   };
+
+  const onToggleLike = (commentId) => {
+    //likeMutate(postId,commentId)
+  };
+
+  //햔제 로그인한 유저의 것인지 확인?
 
   return (
     <CommentsBlock>
@@ -59,7 +72,24 @@ const CommentsContainer = ({ postId }) => {
             <div className="main">
               <div className="nickname"> {comment.nickname}</div>
               <div className="contents">{comment.comment}</div>
-              <div className="createdAt">{comment.createdAt}</div>
+              <div className="menu">
+                {comment.createdAt}
+                <div className="likeComment">
+                  <p
+                    className="like"
+                    onClick={() => onToggleLike(comment.commentId)}>
+                    {comment.hasLikedComment ? (
+                      <p className="hasLikedTrue">
+                        <BsHeartFill />
+                      </p>
+                    ) : (
+                      <BsHeart />
+                    )}
+                    좋아요
+                  </p>
+                </div>
+                <div className="deleteComment">삭제</div>
+              </div>
             </div>
           </li>
         ))}
@@ -136,9 +166,20 @@ const CommentBlock = styled.div`
     .contents {
       margin-bottom: 10px;
     }
-    .createdAt {
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 15px;
       font-size: 0.8rem;
       color: ${theme.mediumGrayColor};
+      .like {
+        ${theme.flexCenter}
+        cursor: pointer;
+        gap: 5px;
+        .hasLikedTrue {
+          color: ${theme.primaryColor};
+        }
+      }
     }
   }
 `;

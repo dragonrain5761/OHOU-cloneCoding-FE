@@ -7,6 +7,7 @@ import {
   useUpdatePostMutation,
   usePostQuery,
   useLikePostMutation,
+  useDeletePostMutation,
 } from "../../hooks/apis/usePostQuery";
 import Swal from "sweetalert2";
 import theme from "../../lib/styles/theme";
@@ -16,15 +17,11 @@ const PostContainer = ({ postId }) => {
   const navigate = useNavigate();
   const [onSelected, setOnSelected] = useState(false);
 
-  // const { data, isLoading, isError } = usePostQuery();
-  // // // update 함수이므로 글쓰기 페이지로 함수 이동
-  // const {
-  //   mutate: updateMutate,
-  //   isLoading2,
-  //   isError2,
-  // } = useUpdatePostMutation();
-  // const { mutate: likeMutate, isLoading3, isError3 } = useLikePostMutation();
-  // // 삭제 로직도 추가
+  const { data, isLoading, isError } = usePostQuery();
+  // update 함수이므로 글쓰기 페이지로 함수 이동
+  const updateMutate = useUpdatePostMutation();
+  const deleteMutate = useDeletePostMutation();
+  const likeMutate = useLikePostMutation();
 
   const getAllPosts = async () => {
     const res = await getPosts();
