@@ -111,60 +111,59 @@
   ],
   "items": [
     {
-      "itemId": 1,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 1,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 2,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 2,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 3,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 3,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 4,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 4,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 5,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 5,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
+    },    {
+      "id": 6,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 6,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 7,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     },
     {
-      "itemId": 7,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
-    },
-    {
-      "itemId": 8,
-      "itemName": "LG전자",
-      "title": "최대혜택가 116만원대) LG 디오스 오브제컬렉션 양문형 냉장고 S834MKE10",
-      "price": 1329000,
-      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/167506006033121419.jpg?gif=1&w=720&h=720&c=c&webp=1"
+      "id": 8,
+      "itemName": "디퓨저",
+      "title": "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
+      "price": "9,900원",
+      "itemImg": "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/166486008029526220.jpg?gif=1&w=960&h=960&c=c&webp=1"
     }
   ],
   "signup": [

@@ -2,12 +2,14 @@ import styles from "./Product.module.css";
 
 const Product = ({
   item,
+  options,
+  moreItems,
   onClickPurchaseButton,
   onClickCartButton,
   onChangeOption,
   onChangeMoreItem
   }) => {
-  const { itemName, title, price, itemImg, options, moreItems } = item;
+  const { itemName, title, price, itemImg } = item;
 
   return (
     <div className={styles.Product}>
