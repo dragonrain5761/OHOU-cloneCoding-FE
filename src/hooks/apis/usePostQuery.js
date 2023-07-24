@@ -28,15 +28,13 @@ export const useDeletePostMutation = () => {
 
 export const useLikePostMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    likePost,
-    //   {
-    //   onSuccess: (data) => {
-    //     queryClient.setQueryData(PostQueryKey, (prevData) => ({
-    //       ...prevData,
-    //       data: [...prevData.data, data.data],
-    //     }));
-    //   },
-    // }
-  );
+  return useMutation(likePost, {
+    //바로 상태 반영?
+    onSuccess: (data) => {
+      queryClient.setQueryData(PostQueryKey, (prevData) => ({
+        ...prevData,
+        data: [...prevData.data, data.data],
+      }));
+    },
+  });
 };

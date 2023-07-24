@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import {
   useUpdatePostMutation,
   usePostQuery,
+  useLikePostMutation,
 } from "../../hooks/apis/usePostQuery";
 import Swal from "sweetalert2";
+import theme from "../../lib/styles/theme";
 
 const PostContainer = ({ postId }) => {
   const [post, setPost] = useState({});
@@ -15,10 +17,13 @@ const PostContainer = ({ postId }) => {
   const [onSelected, setOnSelected] = useState(false);
 
   // const { data, isLoading, isError } = usePostQuery();
-
-  // // update 함수이므로 글쓰기 페이지로 함수 이동
-  // const { mutate, isLoading2, isError2 } = useUpdatePostMutation();
-  // console.log(useUpdatePostMutation);
+  // // // update 함수이므로 글쓰기 페이지로 함수 이동
+  // const {
+  //   mutate: updateMutate,
+  //   isLoading2,
+  //   isError2,
+  // } = useUpdatePostMutation();
+  // const { mutate: likeMutate, isLoading3, isError3 } = useLikePostMutation();
   // // 삭제 로직도 추가
 
   const getAllPosts = async () => {
@@ -36,17 +41,28 @@ const PostContainer = ({ postId }) => {
 
   const onClickToDelete = () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "게시물을 삭제하시겠습니까?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: `${theme.primaryColor}`,
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "삭제하기",
+      cancelButtonText: "취소하기",
+      customClass: {
+        popup: "my-popup",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
-        //삭제 로직
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        //삭제 로직1
+        Swal.fire({
+          title: "삭제 완료",
+          text: "게시물 삭제가 성공적으로 완료되었습니다.",
+          icon: "success",
+          confirmButtonColor: `${theme.primaryColor}`,
+          customClass: {
+            popup: "my-popup",
+          },
+        });
       }
     });
   };
@@ -55,10 +71,15 @@ const PostContainer = ({ postId }) => {
     setOnSelected(!onSelected);
   };
 
+  const onLikePost = () => {
+    console.log(postId);
+    // likeMutate(postId);
+  };
+
   //update 함수이므로 글쓰기 페이지로 함수 이동
   const handleUpdate = async (e) => {
-    // const updatedPost = {};
-    // e.preventDefault();
+    const updatedPost = {};
+    e.preventDefault();
     // mutate(postId, updatedPost);
   };
 
@@ -72,6 +93,7 @@ const PostContainer = ({ postId }) => {
       onToggleSelected={onToggleSelected}
       onClickToUpdate={onClickToUpdate}
       onClickToDelete={onClickToDelete}
+      onLikePost={onLikePost}
     />
   );
 };

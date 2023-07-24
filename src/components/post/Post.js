@@ -1,4 +1,4 @@
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { FaRegComment } from "react-icons/fa";
 import { BsThreeDots } from "react-icons/bs";
 
@@ -10,13 +10,14 @@ const Post = ({
   onToggleSelected,
   onClickToUpdate,
   onClickToDelete,
+  onLikePost,
 }) => {
   return (
-    <PostBlock>
+    <PostBlock hasLiked={post.hasLiked}>
       <div className="detail">
         <div className="side">
-          <div className="like">
-            <BsHeart />
+          <div className="like" onClick={onLikePost}>
+            {post.hasLiked ? <BsHeartFill /> : <BsHeart />}
           </div>
           <p>{post.likeSize}</p>
           <div className="comment">
