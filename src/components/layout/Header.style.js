@@ -3,6 +3,7 @@ import theme from "../../lib/styles/theme";
 
 const HeaderBlock = styled.div`
   display: flex;
+  top: 0;
   position: fixed;
   justify-content: space-between;
   align-items: center;

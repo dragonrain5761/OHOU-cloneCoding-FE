@@ -2,10 +2,9 @@ import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
 import TemplateBlock from "./Template.style";
 
-const Template = ({ children, header, footer }) => {
+const Template = ({ children, footer }) => {
   return (
     <>
-      {header && <Header />}
       <TemplateBlock>{children}</TemplateBlock>
       {footer && <Footer />}
     </>

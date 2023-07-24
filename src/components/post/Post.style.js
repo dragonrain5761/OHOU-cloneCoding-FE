@@ -7,11 +7,42 @@ const PostBlock = styled.div`
   .detail {
     ${theme.flexCenterColumn}
     position: relative;
-
     img {
       width: 80%;
       max-width: 700px;
       max-height: 800px;
+    }
+    .updateDelete {
+      width: 72%;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      p {
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      ul {
+        ${theme.flexCenterColumn}
+        width: 120px;
+        z-index: 999;
+        border-radius: 10px;
+        border: 1px solid ${theme.lightGrayColor};
+        background-color: ${theme.whiteColor};
+        li {
+          width: 100%;
+          ${theme.flexCenter}
+          height: 43px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: ${theme.lightGrayColor};
+          }
+        }
+        .delete {
+          color: red;
+        }
+      }
     }
     .contents {
       margin-top: 4rem;
@@ -33,7 +64,7 @@ const PostBlock = styled.div`
     .side {
       position: sticky;
       padding-left: 880px;
-      top: 200px;
+      top: 230px;
       ${theme.flexCenterColumn}
       gap: 10px;
       > div {
