@@ -1,5 +1,13 @@
+import Header from "../../components/layout/Header";
+import WriteContainer from "../../containers/write/WriteContainer";
+
 const WritePage = () => {
-  return <div>WritePage</div>;
+  return (
+    <>
+      <Header />
+      <WriteContainer />
+    </>
+  )
 };
 
 export default WritePage;
