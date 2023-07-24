@@ -76,7 +76,6 @@ const PostListContainer = () => {
           onClick={onDecreasePage}>
           <FaChevronLeft />
         </Button>
-        {/* -1? */}
         <div className="pages">{`${currentPage + 1}/${MAXPAGE - 1}`}</div>
         <Button
           size={"xsmall"}

@@ -9,7 +9,7 @@ import ShopListItem from "../../components/main/ShopListItem";
 import { ItemQueryKey } from "../../hooks/apis/useItemsQuery";
 import { useNavigate } from "react-router-dom";
 
-const ShopListContainer = () => {
+const ShopListContainer = ({ searchItems }) => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -29,6 +29,8 @@ const ShopListContainer = () => {
   //     });
   //   }
   // }, [currentPage, queryClient]);
+
+  //** searchItems props가 있으면 그걸로 사용, 없으면 useItemQuery의 data 사용
 
   const getAllItems = async () => {
     const res = await axios.get("http://localhost:4000/items");
