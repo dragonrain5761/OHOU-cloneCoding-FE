@@ -54,7 +54,7 @@ const CommentsContainer = ({ postId }) => {
       </div>
       <CommentBlock className="comments">
         {comments?.map((comment) => (
-          <li className="comment">
+          <li className="comment" key={comment.commentId}>
             <img src={profile} alt="profile" />
             <div className="main">
               <div className="nickname"> {comment.nickname}</div>
