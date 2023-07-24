@@ -26,6 +26,8 @@ const Router = () => {
         </Route>
         <Route>
           <Route path="/write" element={<WritePage />} />
+          {/* 수정용 */}
+          <Route path="/edit/:postId" element={<WritePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -33,3 +35,5 @@ const Router = () => {
 };
 
 export default Router;
+
+//권한별 페이지 라우팅 컴포넌트 필요
