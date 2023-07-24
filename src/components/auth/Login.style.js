@@ -34,6 +34,14 @@ export const LoginBlock = styled.div`
     border: 1px solid ${(props) => props.theme.lightGrayColor};
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.darkColor};
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .loginPwInput {
@@ -49,6 +57,14 @@ export const LoginBlock = styled.div`
     border: 1px solid ${(props) => props.theme.lightGrayColor};
     background-color: ${(props) => props.theme.whiteColor};
     color: ${(props) => props.theme.darkColor};
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
   }
 
   .loginImg {
@@ -56,9 +72,11 @@ export const LoginBlock = styled.div`
     height: 50px;
     object-fit: contain;
     margin-bottom: 30px;
+    cursor: pointer;
   }
 
   .loginSection {
+    margin-bottom: 24px;
     gap: 20px;
     ${theme.flexCenter}
   }
@@ -75,7 +93,7 @@ export const LoginBlock = styled.div`
     width: 100%;
     height: 45px;
     padding: 0px;
-    background-color: #35c5f0;
+    background-color: ${(props) => props.theme.primaryColor};
     border-color: #35c5f0;
     color: #fff;
     font-size: 17px;
@@ -86,5 +104,14 @@ export const LoginBlock = styled.div`
     transition: color 0.1s, background-color 0.1s, border-color 0.1s;
     border-radius: 4px;
     cursor: pointer;
+    &:hover {
+      background-color: ${(props) => props.theme.darkprimaryColor};
+    }
+  }
+
+  .loginHelpSpan {
+    color: #c2c8cc;
+    font-size: 14px;
+    line-height: 18px;
   }
 `;
