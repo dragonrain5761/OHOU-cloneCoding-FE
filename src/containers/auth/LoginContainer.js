@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { LoginBlock } from "../../components/auth/Login.style";
 import Login from "../../components/auth/Login";
-import { useMutation } from "react-query";
-import { login } from "../../api/auth"; // login 함수 import
+import { useSigninMutation } from "../../hooks/apis/useAuthQuery";
 
 const LoginContainer = () => {
   const [formData, setFormData] = useState({
@@ -18,13 +17,11 @@ const LoginContainer = () => {
     }));
   };
 
-  const mutation = useMutation((formData) =>
-    login(formData.email, formData.password)
-  );
+  const loginMutate = useSigninMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(formData);
+    loginMutate(formData);
   };
 
   return (

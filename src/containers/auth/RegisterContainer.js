@@ -2,8 +2,7 @@ import Register from "../../components/auth/Register";
 import React, { useState } from "react";
 import { RegisterBlock } from "../../components/auth/Register.style";
 import logo from "../../assets/transparent-logo.png";
-import { useMutation } from "react-query";
-import { signup } from "../../api/auth"; // signup 함수 import
+import { useSignupMutation } from "../../hooks/apis/useAuthQuery";
 
 const RegisterContainer = () => {
   const [formData, setFormData] = useState({
@@ -30,19 +29,17 @@ const RegisterContainer = () => {
     }));
   };
 
-  const mutation = useMutation((formData) =>
-    signup(formData.email, formData.password)
-  );
+  const registerMutate = useSignupMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutation.mutate(formData);
+    registerMutate(formData);
   };
 
   return (
     <>
       <RegisterBlock>
-        <img className="RegisterImg" src={logo}></img>
+        <img className="RegisterImg" src={logo} alt="register"></img>
         <div className="registerBox">
           <label className="registerlabel">회원가입</label>
           <Register
