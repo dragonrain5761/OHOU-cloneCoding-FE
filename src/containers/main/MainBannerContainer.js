@@ -15,6 +15,7 @@ const MainBannerContainer = () => {
 
   const exampleSide = [pic1, pic2, pic3];
 
+  //carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrImgIndex((prev) => {

@@ -6,30 +6,26 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
 import axios from "axios";
 import ShopListItem from "../../components/main/ShopListItem";
+import { ItemQueryKey } from "../../hooks/apis/useItemsQuery";
+import { useNavigate } from "react-router-dom";
 
 const ShopListContainer = () => {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const MAXPAGE = 10; // 더 알아보쟈
   const SIZE = 8;
 
-  // const { data, isLoading, isError } = useQuery(
-  //   ["post", currentPage],
-  //   () => getItems(SIZE, currentPage), getItems 함수 정의 필요
-  //   {
-  //     staleTime: 3000,
-  //     keepPreviousData: true, //지난 데이터도 캐싱유지
-  //   },
-  // );
+  // const { data, isLoading, isError } = useItemQuery(size, currentPage)
 
   // //prefetching
   // useEffect(() => {
   //   if (currentPage <= MAXPAGE - 1) {
   //     const nextPage = currentPage + 1;
-  //     queryClient.prefetchQuery(["post", nextPage], () => {
-  //       getPosts(SIZE, nextPage);
+  // queryClient.prefetchQuery([ItemQueryKey, currentPage], nextPage], () => {
+  //       getItems(SIZE, nextPage);
   //     });
   //   }
   // }, [currentPage, queryClient]);
@@ -51,7 +47,7 @@ const ShopListContainer = () => {
   // if (isLoading) return <h3>ERROR!</h3>;
 
   const onClickHandler = (id) => {
-    console.log(id);
+    navigate(`/item/${id}`);
   };
 
   const onIncreasePage = () => {
@@ -97,8 +93,6 @@ export default ShopListContainer;
 const ShopListContainerBlock = styled.div`
   ${theme.flexCenterColumn}
   max-width: 1050px;
-  height: auto;
-  margin: 0 auto;
   padding: 0px 20px;
   h1 {
     width: 100%;
@@ -107,9 +101,13 @@ const ShopListContainerBlock = styled.div`
     font-weight: bold;
   }
   li {
+    width: 23%;
+    min-width: 170px;
+    max-height: 440px;
     cursor: pointer;
   }
   .postsContainer {
+    margin-top: 1rem;
     width: 100%;
     height: auto;
     ${theme.flexCenter}

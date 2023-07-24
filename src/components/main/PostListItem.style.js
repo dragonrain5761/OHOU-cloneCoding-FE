@@ -2,34 +2,30 @@ import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 
 const PostListItemBlock = styled.div`
-  ${theme.flexCenterColumn}
-  flex: 1 1 180px;
-  height: 320px;
-  img {
-    width: 200px;
-    height: 200px;
+  margin-top: 1rem;
+  .postImg {
+    width: 95%;
+    height: 100%;
     object-fit: contain;
-    border-radius: 8px;
-    margin: 8px 0px;
+    border-radius: 6px;
   }
   .profile {
-    height: 100px;
+    height: 45px;
     width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-left: 30px;
     font-size: 0.9rem;
     img {
       margin: 0px 6px 0 0;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       object-fit: contain;
     }
   }
   .icons {
     ${theme.flexCenter}
-    margin: 6px 0px;
+    margin: 0.5rem 0px;
     gap: 20px;
     color: ${theme.darkGrayColor};
     span {
@@ -48,9 +44,8 @@ const PostListItemBlock = styled.div`
     }
   }
   .contents {
-    width: 190px;
-    height: 155px;
-    margin: 0 1rem;
+    max-width: 250px;
+    max-height: 110px;
     font-size: 0.75rem;
     color: ${theme.darkGrayColor};
     line-height: 1.3;

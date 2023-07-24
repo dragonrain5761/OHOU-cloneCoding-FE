@@ -11,7 +11,7 @@ const PostListItem = ({ post }) => {
         <img src={profileSrc} alt="profile" />
         <p>{nickname}</p>
       </div>
-      <img src={postImg} alt="main" />
+      <img className="postImg" src={postImg} alt="main" />
       <div className="icons">
         <div className="like">
           <BsHeart />
