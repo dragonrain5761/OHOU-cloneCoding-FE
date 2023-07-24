@@ -1,5 +1,5 @@
 import theme from "../../lib/styles/theme";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const PostBlock = styled.div`
   width: 100%;
@@ -13,8 +13,8 @@ const PostBlock = styled.div`
       max-height: 800px;
     }
     .updateDelete {
-      width: 72%;
-      height: 30px;
+      width: 68%;
+      height: 35px;
       display: flex;
       flex-direction: column;
       align-items: end;
@@ -77,6 +77,14 @@ const PostBlock = styled.div`
         border-radius: 50%;
         width: 60px;
         height: 60px;
+      }
+      .like {
+        ${(props) =>
+          props.hasLiked &&
+          css`
+            color: ${theme.primaryColor};
+          `}
+        cursor: pointer;
       }
       p {
         margin-bottom: 10px;
