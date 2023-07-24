@@ -17,6 +17,7 @@ const HeaderBlock = styled.div`
   .logo {
     width: 140px;
     height: 60px;
+    cursor: pointer;
     img {
       width: 100%;
       height: 100%;
@@ -40,13 +41,6 @@ const HeaderBlock = styled.div`
         color: #bebebe;
       }
     }
-  }
-  .searchIcon {
-    position: absolute;
-    top: 10px;
-    left: 13px;
-    font-size: 1.5rem;
-    color: ${theme.mediumGrayColor};
   }
 `;
 
