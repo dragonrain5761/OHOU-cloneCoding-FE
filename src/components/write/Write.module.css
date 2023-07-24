@@ -1,0 +1,47 @@
+.ItemAdd {
+  width: 600px;
+  margin: 60px auto;
+}
+
+.ItemAdd > h3 {
+  margin: 0;
+}
+
+.ItemAdd_input_container {
+  margin-top: 8px;
+}
+
+.ItemAdd_input_container > label {
+  display: block;
+}
+
+.ItemAdd_input_container > input {
+  width: 600px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.ItemAdd_textarea_container {
+  margin-top: 8px;
+}
+
+.ItemAdd_textarea_container > label {
+  display: block;
+}
+
+.ItemAdd_textarea_container > textarea {
+  width: 600px;
+  height: 144px;
+  box-sizing: border-box;
+}
+
+.ItemAdd_button_container {
+  margin-top: 8px;
+}
+
+.ItemAdd_button_container > button {
+  margin-right: 8px;
+  font-size: 16px;
+  padding: 3px 8px;
+  border: none;
+}
