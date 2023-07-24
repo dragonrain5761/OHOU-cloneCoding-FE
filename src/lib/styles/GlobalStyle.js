@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
     }li {
       list-style: none;
     }
+    .my-popup {
+      width: 300px;
+      padding: 15px 35px;
+    }
 `;
 
 export default GlobalStyle;
