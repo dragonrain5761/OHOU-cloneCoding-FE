@@ -1,4 +1,5 @@
 import Product from "../../components/product/Product";
+import ProductInfo from "../../components/product/ProductInfo";
 import styles from "./ProductContainer.module.css";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -70,6 +71,7 @@ const ProductContainer = () => {
         onChangeOption={onChangeOption}
         onChangeMoreItem={onChangeMoreItem}
       />
+      <ProductInfo/>
     </div>
   )
 }
