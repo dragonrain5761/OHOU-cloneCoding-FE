@@ -1,37 +1,36 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteComment, likeComment, updateComment } from "../../api/comment";
 
 export const CommentQueryKey = "comment";
 
-export const useUpdateCommenttMutation = () => {
+export const useUpdateCommentMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation(updateComment, {
+  const { mutate } = useMutation(updateComment, {
     onSuccess: (data) => {
-      //   queryClient.setQueryData(PostQueryKey, (prevData) => ({
-      //     ...prevData,
-      //     data: [...prevData.data, data.data],
-      //   }));
-      //post refetch ?
+      queryClient.setQueryData(CommentQueryKey, (prevData) => ({
+        ...prevData,
+        data: [...prevData.data, data.data],
+      }));
     },
   });
+  return mutate;
 };
 
 export const useDeleteCommenttMutation = () => {
-  return useMutation(deleteComment);
+  const { mutate } = useMutation(deleteComment);
+  return mutate;
 };
 
 export const useLikeCommentMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    likeComment,
-    //   {
-    //   onSuccess: (data) => {
-    //     queryClient.setQueryData(PostQueryKey, (prevData) => ({
-    //       ...prevData,
-    //       data: [...prevData.data, data.data],
-    //     }));
-    //   },
-    // }
-  );
+  const { mutate } = useMutation(likeComment, {
+    onSuccess: (data) => {
+      queryClient.setQueryData(CommentQueryKey, (prevData) => ({
+        ...prevData,
+        data: [...prevData.data, data.data],
+      }));
+    },
+  });
+  return mutate;
 };
