@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Post from "../../components/post/Post";
 import { useNavigate } from "react-router-dom";
 import {
@@ -8,6 +8,8 @@ import {
 } from "../../hooks/apis/usePostQuery";
 import Swal from "sweetalert2";
 import theme from "../../lib/styles/theme";
+import { useSelector } from "react-redux";
+import { basicAlert } from "../../shared/alert/SwalAlert";
 
 const PostContainer = ({ postId }) => {
   const navigate = useNavigate();
@@ -15,6 +17,16 @@ const PostContainer = ({ postId }) => {
   const { data, isLoading, isError } = usePostQuery(postId);
   const deleteMutate = useDeletePostMutation();
   const likeMutate = useLikePostMutation();
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  useEffect(() => {
+    // 접근 권한이 없는 페이지에 접근 시 로그인 경고를 띄우기
+    if (!isLoggedIn) {
+      basicAlert("로그인이 필요합니다.").then(() => {
+        navigate("/login");
+      });
+    }
+  }, [isLoggedIn]);
 
   const onClickToUpdate = () => {
     navigate(`/edit/${postId}`);
