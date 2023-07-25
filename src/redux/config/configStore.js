@@ -1,3 +1,10 @@
-const configStore = () => {};
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "../modules/user";
 
-export default configStore;
+const store = configureStore({
+  reducer: {
+    userReducer,
+  },
+});
+
+export default store;

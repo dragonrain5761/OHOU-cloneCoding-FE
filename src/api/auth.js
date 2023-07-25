@@ -29,14 +29,15 @@ export const signup = async ({
 export const login = async ({ email, password }) => {
   console.log(email, password);
   const response = await authApi.post("/api/auth/login", { email, password });
-  const { Access, Refresh } = response.data;
+  const Access = response.headers.access.replace("Bearer ", "");
+  const Refresh = response.headers.refresh.replace("Bearer ", "");
 
-  console.log(response);
-  localStorage.setItem("accessToken", Access);
-  localStorage.setItem("refreshToken", Refresh);
-  console.log(localStorage.getItem("accessToken", Access));
-  console.log(localStorage.getItem("refreshToken", Refresh));
-  return response.data;
+  console.log(response.headers);
+
+  localStorage.setItem("Access", Access);
+  localStorage.setItem("Refresh", Refresh);
+
+  return response.headers;
 };
 
 //이메일 인증
