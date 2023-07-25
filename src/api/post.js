@@ -1,4 +1,4 @@
-import { authInstance, defaultInstance } from "./axios";
+import { authInstance, defaultInstance, addInstance } from "./axios";
 
 export const getPosts = async (size, page) => {
   const api = defaultInstance();
@@ -29,3 +29,9 @@ export const likePost = async (postId) => {
   const res = await api.post(`/api/posts/${postId}/like`);
   return res;
 };
+
+export const addPost = async (FormData) => {
+  const api = addInstance();
+  const res = await api.post("/posts", FormData);
+  return res;
+}

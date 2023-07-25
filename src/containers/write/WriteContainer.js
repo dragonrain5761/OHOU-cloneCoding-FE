@@ -1,12 +1,28 @@
 import styles from "./WriteContainer.module.css";
 import Write from "../../components/write/Write";
+import src from "../../assets/logo.jpg";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addPost } from "../../api/post";
+import { useNavigate } from "react-router-dom";
 import { useState, useRef } from 'react';
 
 const WriteContainer = () => {
+  const navigate = useNavigate();
   const inputRef = useRef(null);
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(addPost, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("post")
+      console.log("Added post successfully!")
+    }
+  })
+
+  const onClickToHome = () => {
+    navigate("/");
+  };
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -19,11 +35,10 @@ const WriteContainer = () => {
     setImage(e.target.files[0]);
   }
 
-  const onClickSubmitButton = (e) => {
+  const onClickUploadButton = (e) => {
     e.preventDefault();
 
     const newItem = {
-      title,
       content
     };
 
@@ -31,26 +46,40 @@ const WriteContainer = () => {
     const jsonNewItem = JSON.stringify(newItem);
     const blob = new Blob([jsonNewItem], { type: "application/json" });
 
-    formData.append("data", blob);
-    formData.append("image", image);
+    formData.append("postRequestDto", blob);
+    formData.append("postImg", image);
 
     console.log(formData);
 
-    setTitle('');
+    mutation.mutate(formData);
+
     setContent('');
     inputRef.current.value = null;
   }
 
   return (
-    <div className={styles.Write_container}>
-      <Write
-        content={content}
-        inputRef={inputRef}
-        onChangeContent={onChangeContent}
-        onChangeImage={onChangeImage}
-        onClickSubmitButton={onClickSubmitButton}
-      />
-    </div>
+    <>
+      <div className={styles.Header}>
+        <div className={styles.Image_wrapper}>
+          <img src={src} alt="" onClick={onClickToHome}/>
+        </div>
+
+        <div className={styles.Button_wrapper}>
+          <button onClick={onClickUploadButton}>
+            올리기
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.Write_container}>
+        <Write
+          content={content}
+          inputRef={inputRef}
+          onChangeContent={onChangeContent}
+          onChangeImage={onChangeImage}
+        />
+      </div>
+    </>
   )
 };
 
