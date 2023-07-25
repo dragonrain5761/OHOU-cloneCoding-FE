@@ -47,7 +47,7 @@ const RegisterContainer = () => {
     console.log(formData);
     try {
       const response = await mailCheckMutate.mutateAsync({
-        email: formData.email,
+        email: `${formData.email}@${formData.emailSelect}`,
       });
       setAuthCode((prev) => response.data); //또는 response
       console.log(response);
@@ -74,6 +74,7 @@ const RegisterContainer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //4 -> null로 변경
     // if (!emailVerified) {
     //   basicAlert("이메일 인증을 먼저 완료해주세요.");
     // } else {
