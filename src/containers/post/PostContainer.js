@@ -16,8 +16,6 @@ const PostContainer = ({ postId }) => {
   const deleteMutate = useDeletePostMutation();
   const likeMutate = useLikePostMutation();
 
-  console.log(data);
-
   const onClickToUpdate = () => {
     navigate(`/edit/${postId}`);
   };

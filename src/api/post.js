@@ -8,7 +8,7 @@ export const getPosts = async (size, page) => {
 };
 
 export const getPost = async (postId) => {
-  const api = defaultInstance();
+  const api = authInstance();
   const res = await api.get(`/api/posts/${postId}`);
   return res;
 };
@@ -35,4 +35,4 @@ export const addPost = async (FormData) => {
   const api = addInstance();
   const res = await api.post("/posts", FormData);
   return res;
-}
+};
