@@ -93,7 +93,8 @@ const RegisterContainer = () => {
           className="RegisterImg"
           src={logo}
           alt="register"
-          onClick={onClickLogo}></img>
+          onClick={onClickLogo}
+        ></img>
         <div className="registerBox">
           <label className="registerlabel">회원가입</label>
           <Register
