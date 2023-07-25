@@ -4,6 +4,7 @@ import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 import { Input } from "../common";
 import { useNavigate } from "react-router-dom";
+import { useSearchItemQuery } from "../../hooks/apis/useItemsQuery";
 
 const Search = () => {
   const [text, setText] = useState("");

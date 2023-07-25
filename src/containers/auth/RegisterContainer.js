@@ -19,7 +19,7 @@ const RegisterContainer = () => {
   });
   const [emailCheck, setEmailCheck] = useState("");
   const [sentEmail, setSentEmail] = useState(false);
-  const [authCode, setAuthCode] = useState(4); // null로 변경
+  const [authCode, setAuthCode] = useState(null);
   const [emailVerified, setEmailVerified] = useState(false);
   const registerMutate = useSignupMutation();
   const mailCheckMutate = useMailCheckMutation();
@@ -74,12 +74,11 @@ const RegisterContainer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //4 -> null로 변경
-    // if (!emailVerified) {
-    //   basicAlert("이메일 인증을 먼저 완료해주세요.");
-    // } else {
-    registerMutate(formData);
-    // }
+    if (!emailVerified) {
+      basicAlert("이메일 인증을 먼저 완료해주세요.");
+    } else {
+      registerMutate(formData);
+    }
   };
 
   const onClickLogo = () => {

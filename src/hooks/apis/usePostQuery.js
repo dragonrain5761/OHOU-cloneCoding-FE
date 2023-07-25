@@ -1,10 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deletePost, getPost, likePost, updatePost } from "../../api/post";
 
-// localstorage 여부에 따라 api 다르게?
 export const PostQueryKey = "post";
 export const usePostQuery = (postId) => {
-  return useQuery([PostQueryKey, postId], getPost(postId), {
+  console.log(postId);
+  return useQuery([PostQueryKey, postId], () => getPost(postId), {
+    enabled: !!postId,
     staleTime: 3000,
     keepPreviousData: true, //지난 데이터도 캐싱유지
   });

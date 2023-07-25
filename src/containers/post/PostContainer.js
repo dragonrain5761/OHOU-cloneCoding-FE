@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
-import { getPost, getPosts, updatePost } from "../../api/post";
-
+import { useState } from "react";
 import Post from "../../components/post/Post";
 import { useNavigate } from "react-router-dom";
 import {
-  useUpdatePostMutation,
   usePostQuery,
   useLikePostMutation,
   useDeletePostMutation,
@@ -13,24 +10,13 @@ import Swal from "sweetalert2";
 import theme from "../../lib/styles/theme";
 
 const PostContainer = ({ postId }) => {
-  const [post, setPost] = useState({});
   const navigate = useNavigate();
   const [onSelected, setOnSelected] = useState(false);
-
-  const { data, isLoading, isError } = usePostQuery();
-  // update 함수이므로 글쓰기 페이지로 함수 이동
-  // const updateMutate = useUpdatePostMutation();
+  const { data, isLoading, isError } = usePostQuery(postId);
   const deleteMutate = useDeletePostMutation();
   const likeMutate = useLikePostMutation();
 
-  const getAllPosts = async () => {
-    const res = await getPosts();
-    setPost(res.data[0]);
-  };
-
-  useEffect(() => {
-    getAllPosts();
-  }, []);
+  console.log(data);
 
   const onClickToUpdate = () => {
     navigate(`/edit/${postId}`);
@@ -50,7 +36,7 @@ const PostContainer = ({ postId }) => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        //삭제 로직1
+        //swal 모듈에서 빼서 쓰자
         Swal.fire({
           title: "삭제 완료",
           text: "게시물 삭제가 성공적으로 완료되었습니다.",
@@ -60,6 +46,7 @@ const PostContainer = ({ postId }) => {
             popup: "my-popup",
           },
         });
+        deleteMutate(postId);
       }
     });
   };
@@ -70,22 +57,22 @@ const PostContainer = ({ postId }) => {
 
   const onLikePost = () => {
     console.log(postId);
-    // likeMutate(postId);
+    likeMutate(postId);
   };
 
   //update 함수이므로 글쓰기 페이지로 함수 이동
-  const handleUpdate = async (e) => {
-    const updatedPost = {};
-    e.preventDefault();
-    // mutate(postId, updatedPost);
-  };
+  // const handleUpdate = async (e) => {
+  //   const updatedPost = {};
+  //   e.preventDefault();
+  //   useUp(postId, updatedPost);
+  // };
 
-  // if (isError) return <h3>ERROR!</h3>;
-  // if (isLoading) return <h3>ERROR!</h3>;
+  if (isError) return <h3>ERROR!</h3>;
+  if (isLoading) return <h3>ERROR!</h3>;
 
   return (
     <Post
-      post={post}
+      post={data.data}
       onSelected={onSelected}
       onToggleSelected={onToggleSelected}
       onClickToUpdate={onClickToUpdate}
