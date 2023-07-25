@@ -9,13 +9,14 @@ const defaultInstance = () => {
 };
 
 const authInstance = () => {
-  const token = localStorage.getItem("token");
-  console.log("token", token);
+  const Access = localStorage.getItem("Access");
+  const Refresh = localStorage.getItem("Refresh");
+  // console.log("token", token);
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      Authorization: `Bearer ${token}`,
-      //Refresh: refresh
+      Access: `Bearer ${Access}`,
+      Refresh: `Bearer ${Refresh}`,
     },
   });
   console.log("instance", instance);
@@ -29,7 +30,7 @@ const addInstance = () => {
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
       Authorization: `Bearer ${token}`,
-      "Content-Type": "multipart/form-data"
+      "Content-Type": "multipart/form-data",
       //Refresh: refresh
     },
   });
