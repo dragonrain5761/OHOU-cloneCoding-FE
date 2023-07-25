@@ -1,42 +1,19 @@
 import styles from "./Write.module.css";
 
 const Write = ({
-  title,
   content,
-  navigate,
   inputRef,
-  onChangeTitle,
   onChangeContent,
   onChangeImage,
   onClickSubmitButton
 }) => {
   return (
-    <>
-      <div className={styles.ItemAdd}>
-        {/* Form area */}
-        <h3>Write...!</h3>
-
-        <form onSubmit={onClickSubmitButton}>
-          <div className={styles.ItemAdd_input_container}>
-            <label>Title</label>
-            <input
-              type='text'
-              value={title}
-              onChange={onChangeTitle}
-            />
-          </div>
-
-          <div className={styles.ItemAdd_textarea_container}>
-            <label>Content</label>
-            <textarea
-              value={content}
-              onChange={onChangeContent}
-            >
-            </textarea>
-          </div>
-
-          <div className={styles.ItemAdd_input_container}>
-            <label>Image</label>
+    <div className={styles.Write}>
+      <form onSubmit={onClickSubmitButton}>
+        <div className={styles.Input_container}>
+          <div>
+            <p>사진을 끌어다 놓으세요</p>
+            <p>10장까지 올릴 수 있어요</p>
             <input
               ref={inputRef}
               type='file'
@@ -44,19 +21,18 @@ const Write = ({
               onChange={onChangeImage}
             />
           </div>
+        </div>
 
-          <div className={styles.ItemAdd_button_container}>
-            <button type="submit">Add</button>
-            <button onClick={() => {
-              navigate('/')
-            }}
-            >
-              Back
-            </button>
-          </div>
-        </form>
-      </div>
-    </>
+        <div className={styles.Textarea_container}>
+          <textarea
+            value={content}
+            onChange={onChangeContent}
+            placeholder="어떤 사진인지 짧은 소개로 시작해보세요.&#13;&#10;다양한 #태그도 추가할 수 있어요."
+          >
+          </textarea>
+        </div>
+      </form>
+    </div>
   )
 };
 

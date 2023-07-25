@@ -1,18 +1,12 @@
 import styles from "./WriteContainer.module.css";
 import Write from "../../components/write/Write";
 import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const WriteContainer = () => {
   const inputRef = useRef(null);
-  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
-
-  const onChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
@@ -48,13 +42,10 @@ const WriteContainer = () => {
   }
 
   return (
-    <div className={styles.ItemAdd_container}>
+    <div className={styles.Write_container}>
       <Write
-        title={title}
         content={content}
-        navigate={navigate}
         inputRef={inputRef}
-        onChangeTitle={onChangeTitle}
         onChangeContent={onChangeContent}
         onChangeImage={onChangeImage}
         onClickSubmitButton={onClickSubmitButton}
