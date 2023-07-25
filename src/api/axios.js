@@ -23,12 +23,15 @@ const authInstance = () => {
 };
 
 const addInstance = () => {
-  const token = localStorage.getItem("token");
-  console.log("token", token);
+  const Access = localStorage.getItem("Access");
+  const Refresh = localStorage.getItem("Refresh");
+  // const token = localStorage.getItem("token");
+  // console.log("token", token);
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${Access}`,
+      Refresh: `Bearer ${Refresh}`,
       "Content-Type": "multipart/form-data",
       //Refresh: refresh
     },

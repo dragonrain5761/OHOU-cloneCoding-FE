@@ -8,7 +8,8 @@
 }
 
 .ProductInfo_inner p {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 12px;
 }
 
@@ -41,9 +42,11 @@
 }
 
 .Order_container > div button {
-  font-size: 17px;
-  margin-right: 6px;
-  padding: 17px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 8px;
+  padding: 16px 32px;
+  border-radius: 4px;
   background-color: #35c5f0;
   color: #fff;
 }
