@@ -2,7 +2,8 @@ import { authInstance, defaultInstance, addInstance } from "./axios";
 
 export const getPosts = async (size, page) => {
   const api = defaultInstance();
-  const res = await api.get("/api/posts"); //size, page 추가
+  const params = { size, page };
+  const res = await api.get("/api/posts", { params }); //파라미터로 전달 확인
   return res;
 };
 

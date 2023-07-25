@@ -10,7 +10,6 @@ const SearchPage = () => {
   const { keyword } = useParams();
   const [currentPage, setCurrentPage] = useState(0);
   const queryClient = useQueryClient();
-  const [items, setItems] = useState([]);
 
   const MAXPAGE = 10; // 더 알아보쟈
   const SIZE = 12;
@@ -20,8 +19,8 @@ const SearchPage = () => {
     SIZE,
     currentPage,
   );
+  console.log(data);
 
-  //prefetching
   useEffect(() => {
     if (currentPage <= MAXPAGE - 1) {
       const nextPage = currentPage + 1;
@@ -29,16 +28,7 @@ const SearchPage = () => {
         getSearchItems(keyword, SIZE, nextPage);
       });
     }
-  }, [currentPage, queryClient]);
-
-  // const getAllItems = async () => {
-  //   const res = await axios.get("http://localhost:4000/items");
-  //   setItems(res.data);
-  // };
-
-  // useEffect(() => {
-  //   getAllItems();
-  // }, []);
+  }, [currentPage, keyword, queryClient]);
 
   return (
     <>

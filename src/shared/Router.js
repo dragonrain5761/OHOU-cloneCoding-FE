@@ -19,7 +19,7 @@ const Router = () => {
         <Route
           path="/"
           element={
-            <Template>
+            <Template header footer>
               <MainPage />
             </Template>
           }

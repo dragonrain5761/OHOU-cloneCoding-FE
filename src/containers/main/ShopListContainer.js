@@ -10,9 +10,7 @@ import ShopListContainerBlock from "./ShopListContainer.style";
 import { getItems } from "../../api/item";
 
 const ShopListContainer = ({ searchItems }) => {
-  const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedPost, setSelectedPost] = useState(null);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const MAXPAGE = 10; // 더 알아보쟈
@@ -30,23 +28,8 @@ const ShopListContainer = ({ searchItems }) => {
     }
   }, [currentPage, queryClient]);
 
-  // ** searchItems props가 있으면 그걸로 사용, 없으면 useItemQuery의 data 사용
-
-  // const getAllItems = async () => {
-  //   const res = await axios.get("http://localhost:4000/items");
-  //   setItems(res.data);
-  // };
-
-  // useEffect(() => {
-  //   getAllItems();
-  // }, []);
-
-  if (!items) {
-    return <div>Loading..</div>; //skeleton 적용
-  }
-
-  // if (isError) return <h3>ERROR!</h3>;
-  // if (isLoading) return <h3>ERROR!</h3>;
+  if (isError) return <h3>ERROR!</h3>;
+  if (isLoading) return <h3>ERROR!</h3>;
 
   const onClickHandler = (id) => {
     navigate(`/item/${id}`);
@@ -60,12 +43,12 @@ const ShopListContainer = ({ searchItems }) => {
     setCurrentPage((prev) => prev - 1);
   };
 
+  console.log(data);
   return (
     <ShopListContainerBlock>
       <h1>오늘의딜 👍</h1>
       <ul className="postsContainer">
-        {/* {data?.map((post) => (  useQuery 사용 후 바꾸기*/}
-        {items.map((item) => (
+        {data.data.content.map((item) => (
           <li key={item.itemId} onClick={() => onClickHandler(item.itemId)}>
             <ShopListItem item={item} />
           </li>
