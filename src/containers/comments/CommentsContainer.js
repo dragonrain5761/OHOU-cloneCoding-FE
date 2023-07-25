@@ -6,33 +6,21 @@ import Input from "../../components/common/Input";
 import profile from "../../assets/profile.png";
 import Button from "../../components/common/Button";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { usePostQuery } from "../../hooks/apis/usePostQuery";
+import {
+  useDeleteCommenttMutation,
+  useLikeCommentMutation,
+} from "../../hooks/apis/useCommentQuery";
 
 const CommentsContainer = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
+  const { data, isLoading, isError } = usePostQuery();
+  const deleteMutate = useDeleteCommenttMutation();
+  const likeMutate = useLikeCommentMutation();
 
-  const getAllPosts = async () => {
-    const res = await getPosts(); //getPost로 변경
-    setComments(res.data[0].commentList);
-  };
-
-  // const { data, isLoading, isError } = useQuery("post", getPost(postId), {
-  //   staleTime: 3000,
-  //   keepPreviousData: true,
-  // });
-
-  // const updateMutate = useUpdateCommentMutation();
-
-  // const deleteMutate = useDeleteCommenttMutation();
-
-  // const likeMutate = useLikeCommentMutation();
-
-  // if (isError) return <h3>ERROR!</h3>;
-  // if (isLoading) return <h3>ERROR!</h3>;
-
-  useEffect(() => {
-    getAllPosts();
-  }, []);
+  if (isError) return <h3>ERROR!</h3>;
+  if (isLoading) return <h3>ERROR!</h3>;
 
   const onChangeHandler = (e) => {
     setText(e.target.value);
@@ -40,14 +28,17 @@ const CommentsContainer = ({ postId }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    //postComment(postId, {comment : text})
+    //댓글 작성 로직 필요
+    // postComment(postId, {comment : text})
     setText("");
   };
 
   const onToggleLike = (commentId) => {
-    //likeMutate(postId,commentId)
+    likeMutate(postId, commentId);
   };
 
+  //삭제로직
+  const onDeleteHandler = () => {};
   //햔제 로그인한 유저의 것인지 확인?
 
   return (

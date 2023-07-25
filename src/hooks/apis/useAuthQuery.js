@@ -12,6 +12,6 @@ export const useSignupMutation = () => {
 };
 
 export const useMailCheckMutation = () => {
-  const { mutate } = useMutation(mailCheck);
-  return mutate;
+  const { mutate, mutateAsync } = useMutation(mailCheck);
+  return { mutate, mutateAsync };
 };

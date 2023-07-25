@@ -4,9 +4,10 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
 import axios from "axios";
 import ShopListItem from "../../components/main/ShopListItem";
-import { ItemQueryKey } from "../../hooks/apis/useItemsQuery";
+import { ItemQueryKey, useItemsQuery } from "../../hooks/apis/useItemsQuery";
 import { useNavigate } from "react-router-dom";
 import ShopListContainerBlock from "./ShopListContainer.style";
+import { getItems } from "../../api/item";
 
 const ShopListContainer = ({ searchItems }) => {
   const [items, setItems] = useState([]);
@@ -17,28 +18,28 @@ const ShopListContainer = ({ searchItems }) => {
   const MAXPAGE = 10; // 더 알아보쟈
   const SIZE = 8;
 
-  // const { data, isLoading, isError } = useItemQuery(size, currentPage)
+  const { data, isLoading, isError } = useItemsQuery(SIZE, currentPage);
 
-  // //prefetching
-  // useEffect(() => {
-  //   if (currentPage <= MAXPAGE - 1) {
-  //     const nextPage = currentPage + 1;
-  // queryClient.prefetchQuery([ItemQueryKey, currentPage], nextPage], () => {
-  //       getItems(SIZE, nextPage);
-  //     });
-  //   }
-  // }, [currentPage, queryClient]);
-
-  //** searchItems props가 있으면 그걸로 사용, 없으면 useItemQuery의 data 사용
-
-  const getAllItems = async () => {
-    const res = await axios.get("http://localhost:4000/items");
-    setItems(res.data);
-  };
-
+  //prefetching
   useEffect(() => {
-    getAllItems();
-  }, []);
+    if (currentPage <= MAXPAGE - 1) {
+      const nextPage = currentPage + 1;
+      queryClient.prefetchQuery([ItemQueryKey, currentPage], nextPage, () => {
+        getItems(SIZE, nextPage);
+      });
+    }
+  }, [currentPage, queryClient]);
+
+  // ** searchItems props가 있으면 그걸로 사용, 없으면 useItemQuery의 data 사용
+
+  // const getAllItems = async () => {
+  //   const res = await axios.get("http://localhost:4000/items");
+  //   setItems(res.data);
+  // };
+
+  // useEffect(() => {
+  //   getAllItems();
+  // }, []);
 
   if (!items) {
     return <div>Loading..</div>; //skeleton 적용
