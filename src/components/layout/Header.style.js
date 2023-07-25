@@ -16,6 +16,7 @@ const HeaderBlock = styled.div`
 
   .logo {
     width: 140px;
+    min-width: 80px;
     height: 60px;
     cursor: pointer;
     img {
@@ -31,6 +32,11 @@ const HeaderBlock = styled.div`
       font-weight: 400;
       border-radius: 3px;
     }
+    .search {
+      @media screen and (max-width: ${theme.breakpoints.tablet}) {
+        display: none;
+      }
+    }
     input {
       padding-left: 45px;
       border: 2.125px solid ${theme.lightGrayColor};
@@ -41,6 +47,10 @@ const HeaderBlock = styled.div`
         color: #bebebe;
       }
     }
+  }
+
+  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    padding: 5px;
   }
 `;
 

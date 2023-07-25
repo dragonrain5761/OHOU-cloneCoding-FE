@@ -1,13 +1,12 @@
-import styled from "styled-components";
 import PostListItem from "../../components/main/PostListItem";
 import { useEffect, useState } from "react";
 import { getPosts } from "../../api/post";
-import theme from "../../lib/styles/theme";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
 import { useNavigate } from "react-router-dom";
 import { PostsQueryKey, usePostsQuery } from "../../hooks/apis/usePostsQuery";
+import PostListContainerBlock from "./PostListContainer.style";
 
 const PostListContainer = () => {
   const [posts, setPosts] = useState([]);
@@ -89,51 +88,3 @@ const PostListContainer = () => {
 };
 
 export default PostListContainer;
-
-const PostListContainerBlock = styled.div`
-  ${theme.flexCenterColumn}
-  max-width: 1050px;
-  padding: 50px 40px;
-
-  h1 {
-    width: 100%;
-    margin-left: 50px;
-    font-size: 1.125rem;
-    font-weight: bold;
-  }
-  li {
-    width: 23%;
-    min-width: 170px;
-    max-height: 440px;
-    cursor: pointer;
-  }
-  .postsContainer {
-    width: 100%;
-    min-height: 700px;
-    display: flex;
-    justify-content: space-around;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .pages {
-    ${theme.flexCenter}
-    background-color: ${theme.primaryColor};
-    letter-spacing: 2px;
-    width: 35px;
-    height: 35px;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-  .pagination {
-    width: 120px;
-    margin-top: 2rem;
-    ${theme.flexCenter}
-    button {
-      background-color: ${theme.lightGrayColor};
-    }
-  }
-`;

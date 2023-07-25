@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deletePost, getPost, likePost, updatePost } from "../../api/post";
 
-// localsthorage 여부에 따라 api 다르게?
+// localstorage 여부에 따라 api 다르게?
 export const PostQueryKey = "post";
 export const usePostQuery = (postId) => {
   return useQuery([PostQueryKey, postId], getPost(postId), {

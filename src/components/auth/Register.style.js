@@ -3,7 +3,7 @@ import theme from "../../lib/styles/theme";
 
 export const RegisterBlock = styled.section`
   padding-top: 40px;
-  width: calc(100% - 30px);
+  width: calc(100% - 18px);
   margin: auto;
 
   .registerBox {
@@ -29,6 +29,7 @@ export const RegisterBlock = styled.section`
     width: 88px;
     height: 31px;
     object-fit: contain;
+    cursor: pointer;
   }
 
   .registerDiv {
@@ -127,7 +128,7 @@ export const RegisterBlock = styled.section`
     width: 100%;
     height: 45px;
     padding: 0px;
-    background: ${(props) => props.theme.whiteGrayColor};
+    background: ${(props) => props.theme.mediumGrayColor};
     color: ${(props) => props.theme.lightGrayColor};
     border: 0.1px solid ${(props) => props.theme.lightGrayColor};
     font-size: 17px;
@@ -146,6 +147,29 @@ export const RegisterBlock = styled.section`
     height: 40px;
     width: 100%;
     padding: 0 15px;
+    line-height: 40px;
+    border-radius: 4px;
+    border: 1px solid ${(props) => props.theme.lightGrayColor};
+    background-color: ${(props) => props.theme.whiteColor};
+    color: ${(props) => props.theme.darkColor};
+    &:hover {
+      background-color: ${(props) => props.theme.whiteGrayColor};
+    }
+    &:focus {
+      border-color: ${(props) => props.theme.primaryColor};
+      outline: 1px solid ${(props) => props.theme.primaryColor};
+      box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
+  }
+
+  .emailCheck {
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    display: block;
+    height: 40px;
+    width: 100%;
+    padding: 0px 15px;
+    margin-top: 10px;
     line-height: 40px;
     border-radius: 4px;
     border: 1px solid ${(props) => props.theme.lightGrayColor};
@@ -180,6 +204,26 @@ export const RegisterBlock = styled.section`
       border-color: ${(props) => props.theme.primaryColor};
       outline: 1px solid ${(props) => props.theme.primaryColor};
       box-shadow: 0 0 8px ${(props) => props.theme.primaryColor};
+    }
+  }
+
+  .emailCheckButton {
+    margin-top: 10px;
+    width: 100%;
+    height: 20px;
+    background-color: ${(props) => props.theme.primaryColor};
+    border-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
+    font-size: 13px;
+    min-height: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: ${(props) => props.theme.darkprimaryColor};
     }
   }
 

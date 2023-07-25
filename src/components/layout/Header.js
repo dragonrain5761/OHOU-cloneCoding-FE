@@ -1,4 +1,4 @@
-import { Button, Input } from "../common";
+import { Button } from "../common";
 import HeaderBlock from "./Header.style";
 import src from "../../assets/logo.jpg";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,9 @@ const Header = () => {
         <img src={src} alt="logo" onClick={onClickToHome} />
       </p>
       <div className="nav">
-        <Search />
+        <div className="search">
+          <Search />
+        </div>
         <Button size={"small"} onClick={onClickToLogin}>
           로그인
         </Button>
