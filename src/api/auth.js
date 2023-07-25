@@ -7,7 +7,7 @@ const api = defaultInstance();
 const authApi = authInstance();
 
 // 회원가입 요청을 보내는 함수
-export const signup = async (email, password, pwCheck, nickname) => {
+export const signup = async ({ email, password, pwCheck, nickname }) => {
   const response = await api.post("/signup", {
     email,
     password,

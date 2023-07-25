@@ -44,6 +44,7 @@ const RegisterContainer = () => {
   const handleMailCheck = async (e) => {
     setSentEmail(true);
     e.preventDefault();
+    console.log(formData);
     try {
       const response = await mailCheckMutate.mutateAsync({
         email: formData.email,
@@ -59,8 +60,8 @@ const RegisterContainer = () => {
     setEmailCheck(e.target.value);
   };
 
-  const onCheckEmail = () => {
-    console.log(emailCheck, authCode);
+  const onCheckEmail = (e) => {
+    e.preventDefault();
     if (emailCheck == authCode) {
       basicAlert("인증되었습니다 :)");
       setEmailVerified(true);
@@ -73,11 +74,11 @@ const RegisterContainer = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!emailVerified) {
-      basicAlert("이메일 인증을 먼저 완료해주세요.");
-    } else {
-      registerMutate(formData);
-    }
+    // if (!emailVerified) {
+    //   basicAlert("이메일 인증을 먼저 완료해주세요.");
+    // } else {
+    registerMutate(formData);
+    // }
   };
 
   const onClickLogo = () => {
