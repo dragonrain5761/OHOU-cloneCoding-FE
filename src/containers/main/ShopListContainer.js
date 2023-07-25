@@ -1,6 +1,4 @@
-import styled from "styled-components";
 import { useEffect, useState } from "react";
-import theme from "../../lib/styles/theme";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
@@ -8,6 +6,7 @@ import axios from "axios";
 import ShopListItem from "../../components/main/ShopListItem";
 import { ItemQueryKey } from "../../hooks/apis/useItemsQuery";
 import { useNavigate } from "react-router-dom";
+import ShopListContainerBlock from "./ShopListContainer.style";
 
 const ShopListContainer = ({ searchItems }) => {
   const [items, setItems] = useState([]);
@@ -91,49 +90,3 @@ const ShopListContainer = ({ searchItems }) => {
 };
 
 export default ShopListContainer;
-
-const ShopListContainerBlock = styled.div`
-  ${theme.flexCenterColumn}
-  max-width: 1050px;
-  padding: 0px 20px;
-  h1 {
-    width: 100%;
-    margin-left: 50px;
-    font-size: 1.125rem;
-    font-weight: bold;
-  }
-  li {
-    width: 23%;
-    min-width: 170px;
-    max-height: 440px;
-    cursor: pointer;
-  }
-  .postsContainer {
-    margin-top: 1rem;
-    width: 100%;
-    height: auto;
-    ${theme.flexCenter}
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .pages {
-    ${theme.flexCenter}
-    background-color: ${theme.primaryColor};
-    letter-spacing: 2px;
-    width: 35px;
-    height: 35px;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-  .pagination {
-    width: 120px;
-    margin-top: 2rem;
-    ${theme.flexCenter}
-    button {
-      background-color: ${theme.lightGrayColor};
-    }
-  }
-`;

@@ -19,7 +19,7 @@ const PostContainer = ({ postId }) => {
 
   const { data, isLoading, isError } = usePostQuery();
   // update 함수이므로 글쓰기 페이지로 함수 이동
-  const updateMutate = useUpdatePostMutation();
+  // const updateMutate = useUpdatePostMutation();
   const deleteMutate = useDeletePostMutation();
   const likeMutate = useLikePostMutation();
 

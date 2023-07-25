@@ -8,28 +8,72 @@ import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import { useEffect } from "react";
 import PostPage from "../pages/pages/PostPage";
+import Template from "../containers/layout/Template";
 
 const Router = () => {
   useEffect(() => {}, []);
 
-  //template page 만들어서 outlet 으로 children보여주기
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/search/:keyword" element={<SearchPage />} />
-        <Route path="/post/:postId" element={<PostPage />} />
-        <Route path="/item/:itemId" element={<ProductPage />} />
-        <Route path="/help" element={<HelpPage />} />
-        <Route>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
-        <Route>
-          <Route path="/write" element={<WritePage />} />
-          {/* 수정용 */}
-          <Route path="/edit/:postId" element={<WritePage />} />
-        </Route>
+        <Route
+          path="/"
+          element={
+            <Template>
+              <MainPage />
+            </Template>
+          }
+        />
+        <Route
+          path="/search/:keyword"
+          element={
+            <Template>
+              <SearchPage />
+            </Template>
+          }
+        />
+        <Route
+          path="/post/:postId"
+          element={
+            <Template>
+              <PostPage />
+            </Template>
+          }
+        />
+        <Route
+          path="/item/:itemId"
+          element={
+            <Template>
+              <ProductPage />
+            </Template>
+          }
+        />
+        <Route
+          path="/help"
+          element={
+            <Template>
+              <HelpPage />
+            </Template>
+          }
+        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/write"
+          element={
+            <Template>
+              <WritePage />
+            </Template>
+          }
+        />
+        <Route
+          path="/edit/:postId"
+          element={
+            <Template>
+              <WritePage />
+            </Template>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

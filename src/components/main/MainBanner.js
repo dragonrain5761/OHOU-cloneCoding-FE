@@ -6,7 +6,6 @@ const MainBanner = ({
   exampleMain,
   currImgIndex,
   exampleSide,
-  setCurrImgIndex,
   onIncreaseIdx,
   onDecreaseIdx,
 }) => {

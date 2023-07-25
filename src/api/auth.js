@@ -28,3 +28,9 @@ export const login = async (email, password) => {
   console.log(localStorage.setItem("refreshToken", refreshToken));
   return response.data;
 };
+
+//이메일 인증
+export const mailCheck = async (email) => {
+  const response = await api.post("/mailCheck", { email });
+  return response;
+};

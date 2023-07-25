@@ -1,8 +1,12 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = ({
   formData,
+  emailCheck,
+  sentEmail,
+  onChangeEmailCheck,
+  onCheckEmail,
+  handleMailCheck,
   handleChange,
   handleEmailSelect,
   handleSubmit,
@@ -25,16 +29,14 @@ const Register = ({
                 className="emailInput"
                 placeholder="이메일"
                 value={formData.email}
-                onChange={handleChange}
-              ></input>
+                onChange={handleChange}></input>
             </span>
             <span className="emailSeparator">@</span>
             <span>
               <select
                 className="emailSelect"
                 value={formData.emailSelect}
-                onChange={handleEmailSelect}
-              >
+                onChange={handleEmailSelect}>
                 <option value="" disabled>
                   선택해주세요
                 </option>
@@ -50,9 +52,26 @@ const Register = ({
             </span>
           </div>
           <div>
-            <button className="emailButton" name="emailAuth" type="button">
+            <button
+              className="emailButton"
+              name="emailAuth"
+              onClick={handleMailCheck}>
               이메일 인증하기
             </button>
+            {sentEmail && (
+              <>
+                <input
+                  name="emailCheck"
+                  className="emailCheck"
+                  placeholder="인증번호"
+                  value={emailCheck}
+                  onChange={onChangeEmailCheck}></input>
+                {/* 다르면 튕기게 하기 */}
+                <button className="emailCheckButton" onClick={onCheckEmail}>
+                  확인
+                </button>
+              </>
+            )}
           </div>
         </div>
 
@@ -67,8 +86,7 @@ const Register = ({
             className="pwInput"
             placeholder="비밀번호"
             value={formData.password}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
         </div>
 
         <div className="registerDiv">
@@ -79,8 +97,7 @@ const Register = ({
             className="pwInput"
             placeholder="비밀번호 확인"
             value={formData.pwCheck}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
         </div>
 
         <div className="registerDiv">
@@ -94,8 +111,7 @@ const Register = ({
             className="nameInput"
             placeholder="별명 (2~14자)"
             value={formData.nickname}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
         </div>
 
         <button type="submit" className="submitButton">
