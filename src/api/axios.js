@@ -19,7 +19,6 @@ const authInstance = () => {
       Refresh: `Bearer ${Refresh}`,
     },
   });
-  console.log("instance", instance);
   return instance;
 };
 
