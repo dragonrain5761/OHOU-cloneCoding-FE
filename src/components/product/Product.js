@@ -1,4 +1,6 @@
 import styles from "./Product.module.css";
+import { AiFillStar } from "react-icons/ai";
+import imgTD from "../../assets/product/today-departure.png";
 
 const Product = ({
   item,
@@ -9,7 +11,7 @@ const Product = ({
   onChangeOption,
   onChangeMoreItem
   }) => {
-  const { itemName, title, price, itemImg } = item;
+  const { itemName, itemTitle, price, itemImg } = item;
 
   return (
     <div className={styles.Product}>
@@ -21,8 +23,23 @@ const Product = ({
       <div>
         <div className={styles.Title_container}>
           <p>{itemName}</p>
-          <p>{title}</p>
-          <p>{price}</p>
+          <p>{itemTitle}</p>
+          <p>
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <span>43,500개 리뷰</span>
+          </p>
+          <p>
+            <span>50%</span>
+            {price}
+            <span>원</span>
+            <span>
+              <img src={imgTD} alt="" />
+            </span>
+          </p>
         </div>
 
         <div className={styles.Order_container}>

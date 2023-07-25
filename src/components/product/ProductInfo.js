@@ -1,31 +1,34 @@
 import styles from "./ProductInfo.module.css";
+import imgA from "../../assets/product/1667.webp";
+import imgB from "../../assets/product/1668.webp";
+import imgC from "../../assets/product/1669.avif";
 
 const ProductInfo = () => {
   const options = [
-    "향 선택 (3개 구매 시 3+1)",
-    "01)딥체리(9,900원)",
-    "02)피치티(9,900원)",
-    "03)쥬시프룻(9,900원)"
+    "옵션 선택",
+    "01) 옵션 A",
+    "02) 옵션 B",
+    "03) 옵션 C"
   ];
   const moreItems = [
     "추가상품 (선택)",
-    "드라이플라워 믹스랜덤2종 (3,000원)",
-    "드라이플라워 믹스랜덤3종 (4,000원)",
-    "25cm 블랙스틱 (1,000원)"
+    "01) 상품 A (3,000원)",
+    "02) 상품 B (3,000원)",
+    "03) 상품 C (3,000원)"
   ];
-  const tempImgPaths = [
-    "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168963869950419934.jpg",
-    "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/167460765595187098.jpg",
-    "https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/166718026592807504.jpg"
+  const imgArray = [
+    imgA,
+    imgB,
+    imgC
   ];
 
   return (
     <div className={styles.ProductInfo}>
       <div className={styles.ProductInfo_inner}>
         <p>상품정보</p>
-        {tempImgPaths.map((tempImgPath, index) => (
+        {imgArray.map((imgSrc, index) => (
           <div className={styles.Image_wrapper} key={index}>
-            <img src={tempImgPath} alt="" />
+            <img src={imgSrc} alt="" />
           </div>
         ))}
       </div>

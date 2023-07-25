@@ -11,16 +11,16 @@ const ProductContainer = () => {
   const { data: item, isLoading, error } = useQuery(["item", params.itemId], () => getItem(params.itemId));
 
   const options = [
-    "향 선택 (3개 구매 시 3+1)",
-    "01)딥체리(9,900원)",
-    "02)피치티(9,900원)",
-    "03)쥬시프룻(9,900원)"
+    "옵션 선택",
+    "01) 옵션 A",
+    "02) 옵션 B",
+    "03) 옵션 C"
   ];
   const moreItems = [
     "추가상품 (선택)",
-    "드라이플라워 믹스랜덤2종 (3,000원)",
-    "드라이플라워 믹스랜덤3종 (4,000원)",
-    "25cm 블랙스틱 (1,000원)"
+    "01) 상품 A (3,000원)",
+    "02) 상품 B (3,000원)",
+    "03) 상품 C (3,000원)"
   ];
   const [optionIndex, setOptionIndex] = useState(0);
   const [moreItemIndex, setMoreItemIndex] = useState(0);  
