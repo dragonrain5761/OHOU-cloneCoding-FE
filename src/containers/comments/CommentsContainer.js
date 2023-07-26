@@ -22,7 +22,6 @@ const CommentsContainer = ({ postId }) => {
 
   const queryClient = useQueryClient(); // 수정된 부분
 
-
   if (isError) return <h3>ERROR!</h3>;
   if (isLoading) return <h3>ERROR!</h3>;
 
@@ -49,16 +48,14 @@ const CommentsContainer = ({ postId }) => {
     });
   };
 
-  const onDeleteHandler = async (commentId) => {
-    await deleteMutate([postId, commentId], {
+  //삭제 확인
+  const onDeleteHandler = (commentId) => {
+    console.log(commentId);
+    deleteMutate([postId, commentId], {
       onSuccess: () => {
         queryClient.invalidateQueries(["post", postId]);
       },
     });
-
-    postMutate([postId, text]);
-    setText("");
-  };
   };
 
   return (
@@ -92,10 +89,8 @@ const CommentsContainer = ({ postId }) => {
                 <div className="likeComment">
                   <p
                     className="like"
-
                     onClick={() => onToggleLike(comment.commentId)}
                   >
-
                     {comment.hasCommentLiked ? (
                       <p className="hasLikedTrue">
                         <BsHeartFill />
@@ -109,10 +104,8 @@ const CommentsContainer = ({ postId }) => {
                 {comment.auth && (
                   <div
                     className="deleteComment"
-
                     onClick={() => onDeleteHandler(comment.commentId)}
                   >
-
                     삭제
                   </div>
                 )}

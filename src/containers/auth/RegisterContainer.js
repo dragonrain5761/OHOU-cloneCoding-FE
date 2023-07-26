@@ -21,6 +21,8 @@ const RegisterContainer = () => {
   const [sentEmail, setSentEmail] = useState(false);
   const [authCode, setAuthCode] = useState(null);
   const [emailVerified, setEmailVerified] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [nicknameError, setNicknameError] = useState("");
   const registerMutate = useSignupMutation();
   const mailCheckMutate = useMailCheckMutation();
   const navigate = useNavigate();
@@ -31,6 +33,25 @@ const RegisterContainer = () => {
       ...prevFormData,
       [name]: value,
     }));
+    // 비밀번호 유효성 검사
+    if (name === "password") {
+      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+      if (!passwordRegex.test(value)) {
+        setPasswordError("영문, 숫자를 포함해야합니다.");
+      } else {
+        setPasswordError("");
+      }
+    }
+
+    // 닉네임 유효성 검사
+    if (name === "nickname") {
+      const nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,15}$/;
+      if (!nicknameRegex.test(value)) {
+        setNicknameError("닉네임은 2자 이상 15자 이하여야 합니다.");
+      } else {
+        setNicknameError("");
+      }
+    }
   };
 
   const handleEmailSelect = (e) => {
@@ -106,6 +127,8 @@ const RegisterContainer = () => {
             handleChange={handleChange}
             handleEmailSelect={handleEmailSelect}
             handleSubmit={handleSubmit}
+            passwordError={passwordError}
+            nicknameError={nicknameError}
           />
         </div>
       </RegisterBlock>
