@@ -2,24 +2,33 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteComment, likeComment, postComment } from "../../api/comment";
 
 export const CommentQueryKey = "comment";
+
 export const usePostCommentMutation = () => {
-  const { mutate } = useMutation(postComment);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(postComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("posts");
+    },
+  });
+
   return mutate;
 };
 
 export const useDeleteCommenttMutation = () => {
-  const { mutate } = useMutation(deleteComment);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(deleteComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
   return mutate;
 };
 
 export const useLikeCommentMutation = () => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation(likeComment, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(CommentQueryKey, (prevData) => ({
-        ...prevData,
-        data: [...prevData.data, data.data],
-      }));
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
     },
   });
   return mutate;

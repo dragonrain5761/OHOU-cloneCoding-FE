@@ -56,7 +56,8 @@ const PostContainer = ({ postId }) => {
     setOnSelected(!onSelected);
   };
 
-  const onLikePost = () => {
+  const onLikePost = (e) => {
+    e.preventDefault();
     console.log(postId);
     likeMutate(postId);
   };

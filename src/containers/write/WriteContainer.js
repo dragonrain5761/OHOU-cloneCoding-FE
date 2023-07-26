@@ -11,6 +11,7 @@ import {
   StyledWriteContainer
 } from "./WriteContainer.style";
 
+
 const WriteContainer = () => {
   // const addPost = async (formData) => {
   //   const Access = localStorage.getItem("Access");
