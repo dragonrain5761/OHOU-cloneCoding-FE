@@ -20,18 +20,18 @@ const authInstance = () => {
   });
   instance.interceptors.response.use(
     (res) => {
+      console.log(res);
       return res;
     },
     async (error) => {
+      console.log(error.response);
+      console.log(error.response.headers);
       const originalRequest = error.config;
-      const accessTokenError = error.response.headers["TokenError"];
-      if (
-        accessTokenError &&
-        accessTokenError.includes("expired Access Token") &&
-        !originalRequest._retry
-      ) {
+      const accessTokenError = error.config?.headers["AccessTokenError"];
+      const refreshTokenError = error.config?.headers["RefreshTokenError"];
+      if (accessTokenError && !originalRequest._retry) {
         originalRequest._retry = true;
-        const newAccessToken = error.response.headers["Access"]; //변수명 확인 필요
+        const newAccessToken = error.config.headers["Access"]; //변수명 확인 필요
         localStorage.setItem("Access", newAccessToken);
         originalRequest.headers["Access"] = `Bearer ${newAccessToken}`;
         //이전 요청 재시도
@@ -39,11 +39,7 @@ const authInstance = () => {
         return instance(originalRequest);
       }
 
-      if (
-        accessTokenError &&
-        accessTokenError.includes("expired Refresh Token") &&
-        !originalRequest._retry
-      ) {
+      if (refreshTokenError && !originalRequest._retry) {
         localStorage.removeItem("Access");
         localStorage.removeItem("Refresh");
         console.log("refresh token 만료");

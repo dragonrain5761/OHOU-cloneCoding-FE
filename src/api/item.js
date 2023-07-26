@@ -4,7 +4,7 @@ import { defaultInstance } from "./axios";
 export const getItems = async (size = 8, page) => {
   const api = defaultInstance();
   const params = { size: size, page: page };
-  const res = await api.get("/api/items/home", { params }); // api 주소 바뀔 예정
+  const res = await api.get("/api/items/home", { params });
   return res;
 };
 

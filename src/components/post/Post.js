@@ -13,7 +13,7 @@ const Post = ({
   onLikePost,
 }) => {
   return (
-    <PostBlock hasLiked={post.hasLiked}>
+    <PostBlock hasLiked={post.hasCommentLiked}>
       <div className="detail">
         <div className="side">
           <div className="like" onClick={onLikePost}>
@@ -44,7 +44,6 @@ const Post = ({
         <div className="contents">
           {post.contents}
           <div className="summary">
-            {/* viewCount로 바꾸기 */}
             <p className="view">조회 {post.postViewCount}</p>
             <p className="댓글">댓글 {post.commentSize}</p>
           </div>

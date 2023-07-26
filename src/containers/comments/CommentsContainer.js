@@ -28,21 +28,17 @@ const CommentsContainer = ({ postId }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(text);
     postMutate([postId, text]);
     setText("");
   };
 
   const onToggleLike = (commentId) => {
-    likeMutate(postId, commentId);
+    likeMutate([postId, commentId]);
   };
 
   const onDeleteHandler = (commentId) => {
-    console.log(commentId);
     deleteMutate([postId, commentId]);
   };
-
-  console.log(data.data.commentList);
 
   return (
     <CommentsBlock>
@@ -64,7 +60,11 @@ const CommentsContainer = ({ postId }) => {
           <li className="comment" key={comment.commentId}>
             <img src={profile} alt="profile" />
             <div className="main">
-              <div className="nickname"> {comment.nickname}</div>
+              <div className="nickname">
+                {" "}
+                {comment.nickname}
+                {comment.auth && <div className="myComment">내 댓글</div>}
+              </div>
               <div className="contents">{comment.comment}</div>
               <div className="menu">
                 {comment.createdAt}
@@ -72,7 +72,7 @@ const CommentsContainer = ({ postId }) => {
                   <p
                     className="like"
                     onClick={() => onToggleLike(comment.commentId)}>
-                    {comment.hasLikedComment ? (
+                    {comment.hasCommentLiked ? (
                       <p className="hasLikedTrue">
                         <BsHeartFill />
                       </p>
@@ -82,11 +82,13 @@ const CommentsContainer = ({ postId }) => {
                     좋아요{comment.commentLikeSize}
                   </p>
                 </div>
-                <div
-                  className="deleteComment"
-                  onClick={() => onDeleteHandler(postId, comment.commentId)}>
-                  삭제
-                </div>
+                {comment.auth && (
+                  <div
+                    className="deleteComment"
+                    onClick={() => onDeleteHandler(comment.commentId)}>
+                    삭제
+                  </div>
+                )}
               </div>
             </div>
           </li>
@@ -157,9 +159,19 @@ const CommentBlock = styled.div`
       height: 40px;
     }
     .nickname {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-weight: bold;
       font-size: 1.1rem;
       margin-bottom: 10px;
+      .myComment {
+        font-size: 0.75rem;
+        background-color: ${theme.primaryColor};
+        padding: 4px;
+        border-radius: 5px;
+        color: white;
+      }
     }
     .contents {
       margin-bottom: 10px;
@@ -174,6 +186,7 @@ const CommentBlock = styled.div`
         ${theme.flexCenter}
         cursor: pointer;
         gap: 5px;
+
         .hasLikedTrue {
           color: ${theme.primaryColor};
         }

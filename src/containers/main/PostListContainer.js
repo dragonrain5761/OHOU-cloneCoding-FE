@@ -17,8 +17,6 @@ const PostListContainer = () => {
 
   const { data, isLoading, isError } = usePostsQuery(SIZE, currentPage);
 
-  console.log(data);
-  //prefetching
   useEffect(() => {
     if (currentPage <= MAXPAGE - 1) {
       const nextPage = currentPage + 1;
@@ -51,7 +49,7 @@ const PostListContainer = () => {
     <PostListContainerBlock>
       <h1>20평대 활용하기 좋은 템 BEST 👍</h1>
       <ul className="postsContainer">
-        {data.data?.map((post) => (
+        {data.data.content?.map((post) => (
           <li key={post.postId} onClick={() => onClickHandler(post.postId)}>
             <PostListItem post={post} />
           </li>
