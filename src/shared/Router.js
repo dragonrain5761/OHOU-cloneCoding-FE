@@ -6,13 +6,20 @@ import HelpPage from "../pages/pages/HelpPage";
 import WritePage from "../pages/pages/WritePage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
-import { useEffect } from "react";
 import PostPage from "../pages/pages/PostPage";
 import Template from "../containers/layout/Template";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loginUser } from "../redux/modules/user";
 
 const Router = () => {
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (localStorage.getItem("Access")) {
+      dispatch(loginUser());
+    }
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +34,7 @@ const Router = () => {
         <Route
           path="/search/:keyword"
           element={
-            <Template>
+            <Template header footer>
               <SearchPage />
             </Template>
           }
@@ -35,7 +42,7 @@ const Router = () => {
         <Route
           path="/post/:postId"
           element={
-            <Template>
+            <Template header footer>
               <PostPage />
             </Template>
           }
@@ -43,7 +50,7 @@ const Router = () => {
         <Route
           path="/item/:itemId"
           element={
-            <Template>
+            <Template header footer>
               <ProductPage />
             </Template>
           }
@@ -51,7 +58,7 @@ const Router = () => {
         <Route
           path="/help"
           element={
-            <Template>
+            <Template header footer>
               <HelpPage />
             </Template>
           }
@@ -61,7 +68,7 @@ const Router = () => {
         <Route
           path="/write"
           element={
-            <Template>
+            <Template header footer>
               <WritePage />
             </Template>
           }
@@ -69,7 +76,7 @@ const Router = () => {
         <Route
           path="/edit/:postId"
           element={
-            <Template>
+            <Template header footer>
               <WritePage />
             </Template>
           }

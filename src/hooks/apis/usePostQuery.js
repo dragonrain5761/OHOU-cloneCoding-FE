@@ -3,11 +3,10 @@ import { deletePost, getPost, likePost, updatePost } from "../../api/post";
 
 export const PostQueryKey = "post";
 export const usePostQuery = (postId) => {
-  console.log(postId);
   return useQuery([PostQueryKey, postId], () => getPost(postId), {
     enabled: !!postId,
     staleTime: 3000,
-    keepPreviousData: true, //지난 데이터도 캐싱유지
+    keepPreviousData: true,
   });
 };
 
@@ -35,6 +34,7 @@ export const useLikePostMutation = () => {
   const { mutate } = useMutation(likePost, {
     //바로 상태 반영?
     onSuccess: (data) => {
+      console.log(data);
       queryClient.setQueryData(PostQueryKey, (prevData) => ({
         ...prevData,
         data: [...prevData.data, data.data],

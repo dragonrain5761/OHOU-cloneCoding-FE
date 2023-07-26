@@ -18,7 +18,8 @@ const ShopListContainer = ({ searchItems }) => {
 
   const { data, isLoading, isError } = useItemsQuery(SIZE, currentPage);
 
-  //prefetching
+  console.log(isError);
+
   useEffect(() => {
     if (currentPage <= MAXPAGE - 1) {
       const nextPage = currentPage + 1;
