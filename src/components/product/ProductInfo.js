@@ -1,7 +1,12 @@
-import styles from "./ProductInfo.module.css";
 import imgA from "../../assets/product/1667.webp";
 import imgB from "../../assets/product/1668.webp";
 import imgC from "../../assets/product/1669.avif";
+import {
+  StyledProductInfo,
+  ProductInfoInner,
+  ImageWrapper,
+  OrderContainer
+} from "./ProductInfo.style";
 
 const ProductInfo = () => {
   const options = [
@@ -23,17 +28,17 @@ const ProductInfo = () => {
   ];
 
   return (
-    <div className={styles.ProductInfo}>
-      <div className={styles.ProductInfo_inner}>
+    <StyledProductInfo>
+      <ProductInfoInner>
         <p>상품정보</p>
         {imgArray.map((imgSrc, index) => (
-          <div className={styles.Image_wrapper} key={index}>
+          <ImageWrapper key={index}>
             <img src={imgSrc} alt="" />
-          </div>
+          </ImageWrapper>
         ))}
-      </div>
+      </ProductInfoInner>
 
-      <div className={styles.Order_container}>
+      <OrderContainer>
         <div>
           <select>
             {options.map((option, index) => (
@@ -52,8 +57,8 @@ const ProductInfo = () => {
           <button>장바구니</button>
           <button>바로구매</button>
         </div>
-      </div>
-    </div>
+      </OrderContainer>
+    </StyledProductInfo>
   )
 }
 
