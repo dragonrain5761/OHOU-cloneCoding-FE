@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getPosts } from "../../api/post";
+import { useState } from "react";
 import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 import Input from "../../components/common/Input";
@@ -10,14 +9,15 @@ import { usePostQuery } from "../../hooks/apis/usePostQuery";
 import {
   useDeleteCommenttMutation,
   useLikeCommentMutation,
+  usePostCommentMutation,
 } from "../../hooks/apis/useCommentQuery";
 
 const CommentsContainer = ({ postId }) => {
-  const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
-  const { data, isLoading, isError } = usePostQuery();
+  const { data, isLoading, isError } = usePostQuery(postId);
   const deleteMutate = useDeleteCommenttMutation();
   const likeMutate = useLikeCommentMutation();
+  const postMutate = usePostCommentMutation();
 
   if (isError) return <h3>ERROR!</h3>;
   if (isLoading) return <h3>ERROR!</h3>;
@@ -28,8 +28,8 @@ const CommentsContainer = ({ postId }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    //댓글 작성 로직 필요
-    // postComment(postId, {comment : text})
+    console.log(text);
+    postMutate([postId, text]);
     setText("");
   };
 
@@ -37,14 +37,17 @@ const CommentsContainer = ({ postId }) => {
     likeMutate(postId, commentId);
   };
 
-  //삭제로직
-  const onDeleteHandler = () => {};
-  //햔제 로그인한 유저의 것인지 확인?
+  const onDeleteHandler = (commentId) => {
+    console.log(commentId);
+    deleteMutate([postId, commentId]);
+  };
+
+  console.log(data.data.commentList);
 
   return (
     <CommentsBlock>
       <div className="header">
-        댓글 <span>{comments.length}</span>
+        댓글 <span>{data.data.length}</span>
       </div>
       <div className="input">
         <img src={profile} alt="profile" />
@@ -57,7 +60,7 @@ const CommentsContainer = ({ postId }) => {
         </Button>
       </div>
       <CommentBlock className="comments">
-        {comments?.map((comment) => (
+        {data.data.commentList?.map((comment) => (
           <li className="comment" key={comment.commentId}>
             <img src={profile} alt="profile" />
             <div className="main">
@@ -76,10 +79,14 @@ const CommentsContainer = ({ postId }) => {
                     ) : (
                       <BsHeart />
                     )}
-                    좋아요
+                    좋아요{comment.commentLikeSize}
                   </p>
                 </div>
-                <div className="deleteComment">삭제</div>
+                <div
+                  className="deleteComment"
+                  onClick={() => onDeleteHandler(postId, comment.commentId)}>
+                  삭제
+                </div>
               </div>
             </div>
           </li>
