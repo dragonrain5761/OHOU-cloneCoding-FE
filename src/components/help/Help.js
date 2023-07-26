@@ -47,8 +47,7 @@ const Help = () => {
               <textarea
                 name="message"
                 maxlength="500"
-                placeholder="문의내용"
-              ></textarea>
+                placeholder="문의내용"></textarea>
             </div>
             <div className="helpDiv">
               <div>

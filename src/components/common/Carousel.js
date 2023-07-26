@@ -9,7 +9,7 @@ const Carousel = ({
   onDecreaseIdx,
 }) => {
   return (
-    <StyledCarousel currImgIndex={currImgIndex} postImages={postImages}>
+    <StyledCarousel currImgIndex={currImgIndex}>
       <div className="carousel">
         <p className="icon left" onClick={onDecreaseIdx}>
           <FaChevronLeft onClick={onDecreaseIdx} />

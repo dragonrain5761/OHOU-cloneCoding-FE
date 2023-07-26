@@ -2,7 +2,7 @@ import PostListItem from "../../components/main/PostListItem";
 import { useEffect, useState } from "react";
 import { getPosts } from "../../api/post";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
 import { useNavigate } from "react-router-dom";
 import { PostsQueryKey, usePostsQuery } from "../../hooks/apis/usePostsQuery";
@@ -12,7 +12,7 @@ const PostListContainer = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const MAXPAGE = 10; // 더 알아보쟈
+  const MAXPAGE = 10;
   const SIZE = 8;
 
   const { data, isLoading, isError } = usePostsQuery(SIZE, currentPage);
@@ -27,7 +27,7 @@ const PostListContainer = () => {
   }, [currentPage, queryClient]);
 
   if (!data) {
-    return <div>Loading..</div>; //skeleton 적용
+    return <div>Loading..</div>;
   }
 
   if (isError) return <h3>ERROR!</h3>;

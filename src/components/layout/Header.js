@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Search from "../search/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/modules/user";
-import { useEffect } from "react";
 import { basicAlert } from "../../shared/alert/SwalAlert";
 
 const Header = () => {
@@ -35,14 +34,6 @@ const Header = () => {
     basicAlert("로그아웃 되었습니다.");
     navigate("/");
   };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      console.log("로그인 상태:", isLoggedIn);
-    } else {
-      console.log("로그아웃 상태:", isLoggedIn);
-    }
-  }, [isLoggedIn]);
 
   return (
     <HeaderBlock>
