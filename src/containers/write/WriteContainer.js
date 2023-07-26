@@ -4,12 +4,30 @@ import src from "../../assets/logo.jpg";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addPost } from "../../api/post";
 import { useNavigate } from "react-router-dom";
-import { useState, useRef } from 'react';
+import { useState, useRef } from "react";
 
 const WriteContainer = () => {
+  // const addPost = async (formData) => {
+  //   const Access = localStorage.getItem("Access");
+  //   const Refresh = localStorage.getItem("Refresh");
+
+  //   await axios.post(
+  //     `${process.env.REACT_APP_API_URL}/api/posts`,
+  //     formData,
+  //     { 
+  //       headers: {
+  //         Access: `Bearer ${Access}`,
+  //         Refresh: `Bearer ${Refresh}`,
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //       withCrentials: true
+  //     }
+  //   );
+  // }
+
   const navigate = useNavigate();
   const inputRef = useRef(null);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
 
   const queryClient = useQueryClient();
@@ -53,7 +71,7 @@ const WriteContainer = () => {
 
     mutation.mutate(formData);
 
-    setContent('');
+    setContent("");
     inputRef.current.value = null;
   }
 
