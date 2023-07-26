@@ -6,6 +6,7 @@ import profile from "../../assets/profile.png";
 import Button from "../../components/common/Button";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { usePostQuery } from "../../hooks/apis/usePostQuery";
+import { useQueryClient } from "@tanstack/react-query";
 import {
   useDeleteCommenttMutation,
   useLikeCommentMutation,
@@ -18,6 +19,7 @@ const CommentsContainer = ({ postId }) => {
   const deleteMutate = useDeleteCommenttMutation();
   const likeMutate = useLikeCommentMutation();
   const postMutate = usePostCommentMutation();
+  const queryClient = useQueryClient(); // 수정된 부분
 
   if (isError) return <h3>ERROR!</h3>;
   if (isLoading) return <h3>ERROR!</h3>;
@@ -26,18 +28,30 @@ const CommentsContainer = ({ postId }) => {
     setText(e.target.value);
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    postMutate([postId, text]);
+    await postMutate([postId, text], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
     setText("");
   };
 
-  const onToggleLike = (commentId) => {
-    likeMutate([postId, commentId]);
+  const onToggleLike = async (commentId) => {
+    await likeMutate([postId, commentId], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
   };
 
-  const onDeleteHandler = (commentId) => {
-    deleteMutate([postId, commentId]);
+  const onDeleteHandler = async (commentId) => {
+    await deleteMutate([postId, commentId], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
   };
 
   return (
@@ -71,7 +85,8 @@ const CommentsContainer = ({ postId }) => {
                 <div className="likeComment">
                   <p
                     className="like"
-                    onClick={() => onToggleLike(comment.commentId)}>
+                    onClick={() => onToggleLike(comment.commentId)}
+                  >
                     {comment.hasCommentLiked ? (
                       <p className="hasLikedTrue">
                         <BsHeartFill />
@@ -85,7 +100,8 @@ const CommentsContainer = ({ postId }) => {
                 {comment.auth && (
                   <div
                     className="deleteComment"
-                    onClick={() => onDeleteHandler(comment.commentId)}>
+                    onClick={() => onDeleteHandler(comment.commentId)}
+                  >
                     삭제
                   </div>
                 )}
