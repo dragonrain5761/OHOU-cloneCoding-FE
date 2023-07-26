@@ -1,5 +1,4 @@
 import Product from "../../components/product/Product";
-import ProductInfo from "../../components/product/ProductInfo";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getItem } from "../../api/item";
@@ -71,7 +70,6 @@ const ProductContainer = () => {
         onChangeOption={onChangeOption}
         onChangeMoreItem={onChangeMoreItem}
       />
-      <ProductInfo/>
     </StyledProductContainer>
   )
 }
