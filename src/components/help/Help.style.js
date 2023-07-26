@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import theme from "../../lib/styles/theme";
 
 export const HelpBlock = styled.section`
   width: 100%;
   max-width: 750px;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 0 16px;
   height: 1000px;
 

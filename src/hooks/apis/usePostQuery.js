@@ -15,10 +15,7 @@ export const useUpdatePostMutation = () => {
 
   const { mutate } = useMutation(updatePost, {
     onSuccess: (data) => {
-      queryClient.setQueryData(PostQueryKey, (prevData) => ({
-        ...prevData,
-        data: [...prevData.data, data.data],
-      }));
+      queryClient.invalidateQueries([PostQueryKey]);
     },
   });
   return mutate;
@@ -36,7 +33,6 @@ export const useLikePostMutation = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries([PostQueryKey]);
-
     },
   });
   return mutate;
