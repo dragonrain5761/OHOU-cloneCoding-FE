@@ -22,6 +22,7 @@ const RegisterContainer = () => {
   const [authCode, setAuthCode] = useState(null);
   const [emailVerified, setEmailVerified] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [pwCheckError, setPwCheckError] = useState("");
   const [nicknameError, setNicknameError] = useState("");
   const registerMutate = useSignupMutation();
   const mailCheckMutate = useMailCheckMutation();
@@ -33,6 +34,7 @@ const RegisterContainer = () => {
       ...prevFormData,
       [name]: value,
     }));
+
     // 비밀번호 유효성 검사
     if (name === "password") {
       const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
@@ -93,12 +95,36 @@ const RegisterContainer = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!emailVerified) {
       basicAlert("이메일 인증을 먼저 완료해주세요.");
-    } else {
-      registerMutate(formData);
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(formData.password)) {
+      basicAlert("비밀번호는 영문과 숫자를 포함한 8자 이상이어야 합니다.");
+      return;
+    }
+
+    if (formData.password !== formData.pwCheck) {
+      basicAlert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+    const nicknameRegex = /^[a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{2,15}$/;
+    if (!nicknameRegex.test(formData.nickname)) {
+      basicAlert("닉네임은 2자 이상 15자 이하여야 합니다.");
+      return;
+    }
+
+    try {
+      await registerMutate(formData);
+      basicAlert("회원가입이 완료되었습니다!");
+      navigate("/");
+    } catch (error) {
+      // console.error("회원가입 실패:", error);
+      basicAlert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
   };
 

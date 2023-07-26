@@ -213,4 +213,8 @@ const CommentBlock = styled.div`
       }
     }
   }
+
+  .deleteComment {
+    cursor: pointer;
+  }
 `;
