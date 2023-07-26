@@ -1,10 +1,15 @@
-import styles from "./WriteContainer.module.css";
 import Write from "../../components/write/Write";
 import src from "../../assets/logo.jpg";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addPost } from "../../api/post";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
+import {
+  StyledHeader,
+  ImageWrapper,
+  ButtonWrapper,
+  StyledWriteContainer
+} from "./WriteContainer.style";
 
 const WriteContainer = () => {
   // const addPost = async (formData) => {
@@ -77,26 +82,26 @@ const WriteContainer = () => {
 
   return (
     <>
-      <div className={styles.Header}>
-        <div className={styles.Image_wrapper}>
+      <StyledHeader>
+        <ImageWrapper>
           <img src={src} alt="" onClick={onClickToHome}/>
-        </div>
+        </ImageWrapper>
 
-        <div className={styles.Button_wrapper}>
+        <ButtonWrapper>
           <button onClick={onClickUploadButton}>
             올리기
           </button>
-        </div>
-      </div>
+        </ButtonWrapper>
+      </StyledHeader>
 
-      <div className={styles.Write_container}>
+      <StyledWriteContainer>
         <Write
           content={content}
           inputRef={inputRef}
           onChangeContent={onChangeContent}
           onChangeImage={onChangeImage}
         />
-      </div>
+      </StyledWriteContainer>
     </>
   )
 };
