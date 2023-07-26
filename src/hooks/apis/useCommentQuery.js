@@ -10,6 +10,7 @@ export const usePostCommentMutation = () => {
       queryClient.invalidateQueries("posts");
     },
   });
+
   return mutate;
 };
 

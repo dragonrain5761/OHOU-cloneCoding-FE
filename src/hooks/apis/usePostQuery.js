@@ -33,8 +33,10 @@ export const useLikePostMutation = () => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation(likePost, {
     //바로 상태 반영?
+
     onSuccess: () => {
       queryClient.invalidateQueries([PostQueryKey]);
+
     },
   });
   return mutate;

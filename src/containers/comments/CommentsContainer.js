@@ -19,7 +19,9 @@ const CommentsContainer = ({ postId }) => {
   const deleteMutate = useDeleteCommenttMutation();
   const likeMutate = useLikeCommentMutation();
   const postMutate = usePostCommentMutation();
+
   const queryClient = useQueryClient(); // 수정된 부분
+
 
   if (isError) return <h3>ERROR!</h3>;
   if (isLoading) return <h3>ERROR!</h3>;
@@ -30,6 +32,7 @@ const CommentsContainer = ({ postId }) => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+
     await postMutate([postId, text], {
       onSuccess: () => {
         queryClient.invalidateQueries(["post", postId]);
@@ -52,6 +55,10 @@ const CommentsContainer = ({ postId }) => {
         queryClient.invalidateQueries(["post", postId]);
       },
     });
+
+    postMutate([postId, text]);
+    setText("");
+  };
   };
 
   return (
@@ -85,8 +92,10 @@ const CommentsContainer = ({ postId }) => {
                 <div className="likeComment">
                   <p
                     className="like"
+
                     onClick={() => onToggleLike(comment.commentId)}
                   >
+
                     {comment.hasCommentLiked ? (
                       <p className="hasLikedTrue">
                         <BsHeartFill />
@@ -100,8 +109,10 @@ const CommentsContainer = ({ postId }) => {
                 {comment.auth && (
                   <div
                     className="deleteComment"
+
                     onClick={() => onDeleteHandler(comment.commentId)}
                   >
+
                     삭제
                   </div>
                 )}
