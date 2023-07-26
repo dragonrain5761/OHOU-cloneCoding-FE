@@ -1,10 +1,10 @@
 import Product from "../../components/product/Product";
 import ProductInfo from "../../components/product/ProductInfo";
-import styles from "./ProductContainer.module.css";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getItem } from "../../api/item";
 import { useParams } from "react-router-dom";
+import { StyledProductContainer } from "./ProductContainer.style";
 
 const ProductContainer = () => {
   const params = useParams();
@@ -61,7 +61,7 @@ const ProductContainer = () => {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <div className={styles.ProductContainer}>
+    <StyledProductContainer>
       <Product
         item={item.data}
         options={options}
@@ -72,7 +72,7 @@ const ProductContainer = () => {
         onChangeMoreItem={onChangeMoreItem}
       />
       <ProductInfo/>
-    </div>
+    </StyledProductContainer>
   )
 }
 
