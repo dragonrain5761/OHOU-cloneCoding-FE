@@ -14,6 +14,7 @@ import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import PostPage from "../pages/pages/PostPage";
 import Template from "../containers/layout/Template";
+import EditPage from "../pages/pages/EditPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loginUser } from "../redux/modules/user";
@@ -87,8 +88,8 @@ const Router = () => {
           <Route
             path="/edit/:postId"
             element={
-              <Template header footer>
-                <WritePage />
+              <Template footer>
+                <EditPage />
               </Template>
             }
           />
