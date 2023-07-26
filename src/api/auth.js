@@ -1,10 +1,5 @@
-import { authInstance, defaultInstance } from "./axios";
-import axios from "axios";
-
-const REACT_API_URL = process.env.REACT_APP_API_URL;
-
+import { defaultInstance } from "./axios";
 const api = defaultInstance();
-const authApi = authInstance();
 
 // 회원가입 요청을 보내는 함수
 export const signup = async ({
