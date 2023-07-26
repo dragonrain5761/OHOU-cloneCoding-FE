@@ -21,25 +21,46 @@ const Product = ({
       </div>
 
       <div>
-        <div className={styles.Title_container}>
-          <p>{itemName}</p>
-          <p>{itemTitle}</p>
-          <p>
+        <div>
+          <div className={styles.Title_container}>
+            <p>{itemName}</p>
+            <p>{itemTitle}</p>
+          </div>
+
+          <div className={styles.Star_container}>
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
             <AiFillStar />
-            <span>43,500개 리뷰</span>
-          </p>
-          <p>
-            <span>50%</span>
-            {price}
-            <span>원</span>
-            <span>
+            <p>43,500개 리뷰</p>
+          </div>
+
+          <div className={styles.Price_container}>
+            <p>50%</p>
+            <p>{price}</p>
+            <p>원</p>
+            <div>
               <img src={imgTD} alt="" />
-            </span>
-          </p>
+            </div>
+          </div>
+
+          <div className={styles.Info_container}>
+            <p>해택</p>
+            <p>
+              <span>10P 적립 (WELCOME 0.1%적립)</span>
+              <span>최대 10% 결제할인(토스페이)</span>
+            </p>
+          </div>
+
+          <div className={styles.Info_container}>
+            <p>배송</p>
+            <p>
+              <span>3000원 (12,000원 이상 구매시 무료배송)</span>
+              <span>12:00까지 결제 시 오늘 출발</span>
+              <span>일반택배</span>
+            </p>
+          </div>
         </div>
 
         <div className={styles.Order_container}>
