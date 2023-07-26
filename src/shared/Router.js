@@ -68,7 +68,7 @@ const Router = () => {
         <Route
           path="/write"
           element={
-            <Template header footer>
+            <Template footer>
               <WritePage />
             </Template>
           }
