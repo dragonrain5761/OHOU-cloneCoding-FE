@@ -13,7 +13,11 @@ const MainBannerBlock = styled.div`
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    min-width: 180px;
+
     img {
+      min-width: 180px;
+
       width: 100%;
       height: 100%;
       object-fit: cover;

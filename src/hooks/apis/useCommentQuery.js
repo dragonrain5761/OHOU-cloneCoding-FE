@@ -1,37 +1,35 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { deleteComment, likeComment, updateComment } from "../../api/comment";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteComment, likeComment, postComment } from "../../api/comment";
 
 export const CommentQueryKey = "comment";
 
-export const useUpdateCommenttMutation = () => {
+export const usePostCommentMutation = () => {
   const queryClient = useQueryClient();
-
-  return useMutation(updateComment, {
-    onSuccess: (data) => {
-      //   queryClient.setQueryData(PostQueryKey, (prevData) => ({
-      //     ...prevData,
-      //     data: [...prevData.data, data.data],
-      //   }));
-      //post refetch ?
+  const { mutate } = useMutation(postComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("posts");
     },
   });
+
+  return mutate;
 };
 
 export const useDeleteCommenttMutation = () => {
-  return useMutation(deleteComment);
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(deleteComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+  return mutate;
 };
 
 export const useLikeCommentMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    likeComment,
-    //   {
-    //   onSuccess: (data) => {
-    //     queryClient.setQueryData(PostQueryKey, (prevData) => ({
-    //       ...prevData,
-    //       data: [...prevData.data, data.data],
-    //     }));
-    //   },
-    // }
-  );
+  const { mutate } = useMutation(likeComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+  return mutate;
 };

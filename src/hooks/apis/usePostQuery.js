@@ -3,16 +3,17 @@ import { deletePost, getPost, likePost, updatePost } from "../../api/post";
 
 export const PostQueryKey = "post";
 export const usePostQuery = (postId) => {
-  return useQuery([PostQueryKey, postId], getPost(postId), {
+  return useQuery([PostQueryKey, postId], () => getPost(postId), {
+    enabled: !!postId,
     staleTime: 3000,
-    keepPreviousData: true, //지난 데이터도 캐싱유지
+    keepPreviousData: true,
   });
 };
 
 export const useUpdatePostMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation(updatePost, {
+  const { mutate } = useMutation(updatePost, {
     onSuccess: (data) => {
       queryClient.setQueryData(PostQueryKey, (prevData) => ({
         ...prevData,
@@ -20,21 +21,23 @@ export const useUpdatePostMutation = () => {
       }));
     },
   });
+  return mutate;
 };
 
 export const useDeletePostMutation = () => {
-  return useMutation(deletePost);
+  const { mutate } = useMutation(deletePost);
+  return mutate;
 };
 
 export const useLikePostMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(likePost, {
+  const { mutate } = useMutation(likePost, {
     //바로 상태 반영?
-    onSuccess: (data) => {
-      queryClient.setQueryData(PostQueryKey, (prevData) => ({
-        ...prevData,
-        data: [...prevData.data, data.data],
-      }));
+
+    onSuccess: () => {
+      queryClient.invalidateQueries([PostQueryKey]);
+
     },
   });
+  return mutate;
 };

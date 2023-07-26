@@ -1,38 +1,36 @@
 import Product from "../../components/product/Product";
-import styles from "./ProductContainer.module.css";
-import itemImg from "../../assets/product/diffuser.avif";
+import ProductInfo from "../../components/product/ProductInfo";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getItem } from "../../api/item";
+import { useParams } from "react-router-dom";
+import { StyledProductContainer } from "./ProductContainer.style";
 
 const ProductContainer = () => {
-  const item = {
-    itemId: 1,
-    itemName: "디퓨저",
-    title: "[토스페이10%] (3+1이벤트) 네이처 디퓨저 200ml / 드라이플라워 증정",
-    price: "9,900원",
-    options: [
-      "향 선택 (3개 구매 시 3+1)",
-      "01)딥체리(9,900원)",
-      "02)피치티(9,900원)",
-      "03)쥬시프룻(9,900원)"
-    ],
-    moreItems: [
-      "추가상품 (선택)",
-      "드라이플라워 믹스랜덤2종 (3,000원)",
-      "드라이플라워 믹스랜덤3종 (4,000원)",
-      "25cm 블랙스틱 (1,000원)"
-    ],
-    itemImg
-  };
+  const params = useParams();
+  const { data: item, isLoading, error } = useQuery(["item", params.itemId], () => getItem(params.itemId));
 
+  const options = [
+    "옵션 선택",
+    "01) 옵션 A",
+    "02) 옵션 B",
+    "03) 옵션 C"
+  ];
+  const moreItems = [
+    "추가상품 (선택)",
+    "01) 상품 A (3,000원)",
+    "02) 상품 B (3,000원)",
+    "03) 상품 C (3,000원)"
+  ];
   const [optionIndex, setOptionIndex] = useState(0);
   const [moreItemIndex, setMoreItemIndex] = useState(0);  
 
   const onClickPurchaseButton = () => {
     alert(`
-      상품명: ${item.itemName},
-      가격: ${item.price},
-      옵션: ${optionIndex === 0 ? "" : item.options[optionIndex]},
-      추가상품: ${moreItemIndex === 0 ? "" : item.moreItems[moreItemIndex]}
+      상품명: ${item.data.itemName},
+      가격: ${item.data.price},
+      옵션: ${optionIndex === 0 ? "" : options[optionIndex]},
+      추가상품: ${moreItemIndex === 0 ? "" : moreItems[moreItemIndex]}
 
       을 구매했습니다!
     `);
@@ -40,10 +38,10 @@ const ProductContainer = () => {
 
   const onClickCartButton = () => {
     alert(`
-      상품명: ${item.itemName},
-      가격: ${item.price},
-      옵션: ${optionIndex === 0 ? "" : item.options[optionIndex]},
-      추가상품: ${moreItemIndex === 0 ? "" : item.moreItems[moreItemIndex]}
+      상품명: ${item.data.itemName},
+      가격: ${item.data.price},
+      옵션: ${optionIndex === 0 ? "" : options[optionIndex]},
+      추가상품: ${moreItemIndex === 0 ? "" : moreItems[moreItemIndex]}
 
       이 장바구니에 추가되었습니다!
     `);
@@ -59,16 +57,22 @@ const ProductContainer = () => {
     setMoreItemIndex(e.target.value);
   }
 
+  if (isLoading) return 'Loading...';
+  if (error) return 'An error has occurred: ' + error.message;
+
   return (
-    <div className={styles.ProductContainer}>
+    <StyledProductContainer>
       <Product
-        item={item}
+        item={item.data}
+        options={options}
+        moreItems={moreItems}
         onClickPurchaseButton={onClickPurchaseButton}
         onClickCartButton={onClickCartButton}
         onChangeOption={onChangeOption}
         onChangeMoreItem={onChangeMoreItem}
       />
-    </div>
+      <ProductInfo/>
+    </StyledProductContainer>
   )
 }
 

@@ -1,28 +1,77 @@
-import styles from "./Product.module.css";
+import { AiFillStar } from "react-icons/ai";
+import imgTD from "../../assets/product/today-departure.png";
+import {
+  StyledProduct,
+  ImageWrapper,
+  TitleContainer,
+  StarContainer,
+  PriceContainer,
+  InfoContainer,
+  OrderContainer
+} from "./Product.style";
 
 const Product = ({
   item,
+  options,
+  moreItems,
   onClickPurchaseButton,
   onClickCartButton,
   onChangeOption,
   onChangeMoreItem
   }) => {
-  const { itemName, title, price, itemImg, options, moreItems } = item;
+  const { itemName, itemTitle, price, itemImg } = item;
 
   return (
-    <div className={styles.Product}>
-      <div className={styles.Image_wrapper}>
+    <StyledProduct>
+      <ImageWrapper>
         <img src={itemImg} alt="" />
-      </div>
+        {/* <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168963869950419934.jpg" alt="" /> */}
+      </ImageWrapper>
 
       <div>
-        <div className={styles.Title_container}>
-          <p>{itemName}</p>
-          <p>{title}</p>
-          <p>{price}</p>
+        <div>
+          <TitleContainer>
+            <p>{itemName}</p>
+            <p>{itemTitle}</p>
+          </TitleContainer>
+
+          <StarContainer>
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <p>43,500개 리뷰</p>
+          </StarContainer>
+
+          <PriceContainer>
+            <p>50%</p>
+            <p>{price}</p>
+            <p>원</p>
+            <div>
+              <img src={imgTD} alt="" />
+            </div>
+          </PriceContainer>
+
+          <InfoContainer>
+            <p>해택</p>
+            <p>
+              <span>10P 적립 (WELCOME 0.1%적립)</span>
+              <span>최대 10% 결제할인(토스페이)</span>
+            </p>
+          </InfoContainer>
+
+          <InfoContainer>
+            <p>배송</p>
+            <p>
+              <span>3000원 (12,000원 이상 구매시 무료배송)</span>
+              <span>12:00까지 결제 시 오늘 출발</span>
+              <span>일반택배</span>
+            </p>
+          </InfoContainer>
         </div>
 
-        <div className={styles.Order_container}>
+        <OrderContainer>
           <select
             onChange={onChangeOption}
           >
@@ -51,9 +100,9 @@ const Product = ({
               바로구매
             </button>
           </div>
-        </div>
+        </OrderContainer>
       </div>
-    </div>
+    </StyledProduct>
   );
 };
 

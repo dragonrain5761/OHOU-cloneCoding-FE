@@ -1,8 +1,8 @@
-import mainSrc from "../../assets/main.avif";
+import mainSrc from "../../assets/main.webp";
 import { useEffect, useState } from "react";
-import pic1 from "../../assets/example/1.avif";
-import pic2 from "../../assets/example/2.avif";
-import pic3 from "../../assets/example/3.avif";
+import pic1 from "../../assets/sidebanner/1.webp";
+import pic2 from "../../assets/sidebanner/2.webp";
+import pic3 from "../../assets/sidebanner/3.webp";
 import MainBanner from "../../components/main/MainBanner";
 
 const MainBannerContainer = () => {
@@ -15,7 +15,6 @@ const MainBannerContainer = () => {
 
   const exampleSide = [pic1, pic2, pic3];
 
-  //carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrImgIndex((prev) => {
@@ -56,7 +55,6 @@ const MainBannerContainer = () => {
       exampleMain={exampleMain}
       currImgIndex={currImgIndex}
       exampleSide={exampleSide}
-      setCurrImgIndex={setCurrImgIndex}
       onIncreaseIdx={onIncreaseIdx}
       onDecreaseIdx={onDecreaseIdx}
     />

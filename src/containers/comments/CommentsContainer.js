@@ -1,46 +1,67 @@
-import { useEffect, useState } from "react";
-import { getPosts } from "../../api/post";
+import { useState } from "react";
 import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 import Input from "../../components/common/Input";
 import profile from "../../assets/profile.png";
 import Button from "../../components/common/Button";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { usePostQuery } from "../../hooks/apis/usePostQuery";
+import { useQueryClient } from "@tanstack/react-query";
+import {
+  useDeleteCommenttMutation,
+  useLikeCommentMutation,
+  usePostCommentMutation,
+} from "../../hooks/apis/useCommentQuery";
 
 const CommentsContainer = ({ postId }) => {
-  const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
+  const { data, isLoading, isError } = usePostQuery(postId);
+  const deleteMutate = useDeleteCommenttMutation();
+  const likeMutate = useLikeCommentMutation();
+  const postMutate = usePostCommentMutation();
 
-  const getAllPosts = async () => {
-    const res = await getPosts(); //getPost로 변경
-    setComments(res.data[0].commentList);
-  };
+  const queryClient = useQueryClient(); // 수정된 부분
 
-  // const { data, isLoading, isError } = useQuery("post", getPost(postId), {
-  //   staleTime: 3000,
-  //   keepPreviousData: true, //지난 데이터도 캐싱유지
-  // });
-
-  // if (isError) return <h3>ERROR!</h3>;
-  // if (isLoading) return <h3>ERROR!</h3>;
-
-  useEffect(() => {
-    getAllPosts();
-  }, []);
+  if (isError) return <h3>ERROR!</h3>;
+  if (isLoading) return <h3>ERROR!</h3>;
 
   const onChangeHandler = (e) => {
     setText(e.target.value);
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    //postComment(postId, {comment : text})
+
+    await postMutate([postId, text], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
     setText("");
+  };
+
+  const onToggleLike = async (commentId) => {
+    await likeMutate([postId, commentId], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
+  };
+
+  //삭제 확인
+  const onDeleteHandler = (commentId) => {
+    console.log(commentId);
+    deleteMutate([postId, commentId], {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post", postId]);
+      },
+    });
   };
 
   return (
     <CommentsBlock>
       <div className="header">
-        댓글 <span>{comments.length}</span>
+        댓글 <span>{data.data.length}</span>
       </div>
       <div className="input">
         <img src={profile} alt="profile" />
@@ -53,13 +74,42 @@ const CommentsContainer = ({ postId }) => {
         </Button>
       </div>
       <CommentBlock className="comments">
-        {comments?.map((comment) => (
+        {data.data.commentList?.map((comment) => (
           <li className="comment" key={comment.commentId}>
             <img src={profile} alt="profile" />
             <div className="main">
-              <div className="nickname"> {comment.nickname}</div>
+              <div className="nickname">
+                {" "}
+                {comment.nickname}
+                {comment.auth && <div className="myComment">내 댓글</div>}
+              </div>
               <div className="contents">{comment.comment}</div>
-              <div className="createdAt">{comment.createdAt}</div>
+              <div className="menu">
+                {comment.createdAt}
+                <div className="likeComment">
+                  <p
+                    className="like"
+                    onClick={() => onToggleLike(comment.commentId)}
+                  >
+                    {comment.hasCommentLiked ? (
+                      <p className="hasLikedTrue">
+                        <BsHeartFill />
+                      </p>
+                    ) : (
+                      <BsHeart />
+                    )}
+                    좋아요{comment.commentLikeSize}
+                  </p>
+                </div>
+                {comment.auth && (
+                  <div
+                    className="deleteComment"
+                    onClick={() => onDeleteHandler(comment.commentId)}
+                  >
+                    삭제
+                  </div>
+                )}
+              </div>
             </div>
           </li>
         ))}
@@ -129,16 +179,42 @@ const CommentBlock = styled.div`
       height: 40px;
     }
     .nickname {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-weight: bold;
       font-size: 1.1rem;
       margin-bottom: 10px;
+      .myComment {
+        font-size: 0.75rem;
+        background-color: ${theme.primaryColor};
+        padding: 4px;
+        border-radius: 5px;
+        color: white;
+      }
     }
     .contents {
       margin-bottom: 10px;
     }
-    .createdAt {
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 15px;
       font-size: 0.8rem;
       color: ${theme.mediumGrayColor};
+      .like {
+        ${theme.flexCenter}
+        cursor: pointer;
+        gap: 5px;
+
+        .hasLikedTrue {
+          color: ${theme.primaryColor};
+        }
+      }
     }
+  }
+
+  .deleteComment {
+    cursor: pointer;
   }
 `;

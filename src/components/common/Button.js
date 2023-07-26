@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "../../lib/styles/theme";
 
 const Button = ({ children, size, color, ...rest }) => {
   return (
@@ -51,6 +52,7 @@ const colors = {
 };
 
 const StyledButton = styled.button`
+  ${theme.flexCenter}
   background-color: ${(props) => props.theme.primary};
   display: flex;
   align-items: center;
