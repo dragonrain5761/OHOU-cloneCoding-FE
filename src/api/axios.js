@@ -18,23 +18,25 @@ const authInstance = () => {
       Refresh: `Bearer ${Refresh}`,
     },
   });
+
   instance.interceptors.response.use(
     (res) => {
       console.log(res);
       return res;
     },
     async (error) => {
-      console.log(error.response);
-      console.log(error.response.headers);
+      console.log(error);
       const originalRequest = error.config;
-      const accessTokenError = error.config?.headers["AccessTokenError"];
-      const refreshTokenError = error.config?.headers["RefreshTokenError"];
+      const accessTokenError = error.response?.headers["Accesstokenerror"];
+      const refreshTokenError = error.response?.headers["Refreshtokenerror"];
       if (accessTokenError && !originalRequest._retry) {
         originalRequest._retry = true;
-        const newAccessToken = error.config.headers["Access"]; //변수명 확인 필요
+
+        const newAccessToken = error.response.headers["Access"]; //변수명 확인 필요
+
         localStorage.setItem("Access", newAccessToken);
         originalRequest.headers["Access"] = `Bearer ${newAccessToken}`;
-        //이전 요청 재시도
+
         console.log("새 access token 받음");
         return instance(originalRequest);
       }

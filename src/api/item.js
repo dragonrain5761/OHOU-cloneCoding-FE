@@ -16,12 +16,9 @@ export const getItem = async (itemId) => {
 };
 
 //상품 검색
-export const getSearchItems = async (keyword, size = 16, page = 0) => {
+export const getSearchItems = async (keyword, size = 16, page) => {
   const api = defaultInstance();
-  const params = { keyword: keyword, size: size, page: page, isASC: true };
-  console.log(params);
-  //Params check
+  const params = { keyword: keyword, size: size, page: page + 1 };
   const res = await api.get("/api/items/search", { params });
-  console.log(res);
   return res;
 };
