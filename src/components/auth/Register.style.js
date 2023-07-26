@@ -260,4 +260,9 @@ export const RegisterBlock = styled.section`
       padding-left: 10px;
     }
   }
+
+  .error {
+    font-size: 12px;
+    color: red;
+  }
 `;

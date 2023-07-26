@@ -10,6 +10,8 @@ const Register = ({
   handleChange,
   handleEmailSelect,
   handleSubmit,
+  passwordError,
+  nicknameError,
 }) => {
   return (
     <div className="registerBox">
@@ -92,6 +94,8 @@ const Register = ({
             value={formData.password}
             onChange={handleChange}
           ></input>
+          <br></br>
+          {passwordError && <div className="error">{passwordError}</div>}
         </div>
 
         <div className="registerDiv">
@@ -104,6 +108,8 @@ const Register = ({
             value={formData.pwCheck}
             onChange={handleChange}
           ></input>
+          <br></br>
+          {passwordError && <div className="error">{passwordError}</div>}
         </div>
 
         <div className="registerDiv">
@@ -119,6 +125,8 @@ const Register = ({
             value={formData.nickname}
             onChange={handleChange}
           ></input>
+          <br></br>
+          {nicknameError && <div className="error">{nicknameError}</div>}
         </div>
 
         <button type="submit" className="submitButton">
