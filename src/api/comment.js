@@ -1,12 +1,17 @@
 import { authInstance } from "./axios";
 
-export const postComment = async (postId, comment) => {
+export const postComment = async (data) => {
+  const [postId, comment] = data;
   const api = authInstance();
-  const res = await api.post(`/api/posts/${postId}/comments`, comment);
+  const res = await api.post(`/api/posts/${postId}/comments`, {
+    comment: comment,
+  });
   return res;
 };
 
-export const deleteComment = async (postId, commentId) => {
+export const deleteComment = async (data) => {
+  console.log(data);
+  const [postId, commentId] = data;
   const api = authInstance();
   const res = await api.delete(`/api/posts/${postId}/comments/${commentId}`);
   return res;

@@ -10,7 +10,6 @@ import PostListContainerBlock from "./PostListContainer.style";
 
 const PostListContainer = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedPost, setSelectedPost] = useState(null);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const MAXPAGE = 10; // 더 알아보쟈
@@ -23,7 +22,7 @@ const PostListContainer = () => {
   useEffect(() => {
     if (currentPage <= MAXPAGE - 1) {
       const nextPage = currentPage + 1;
-      queryClient.prefetchQuery([PostsQueryKey, nextPage], () => {
+      queryClient.prefetchQuery([PostsQueryKey, currentPage], nextPage, () => {
         getPosts(SIZE, nextPage);
       });
     }

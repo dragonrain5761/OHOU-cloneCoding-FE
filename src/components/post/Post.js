@@ -45,7 +45,7 @@ const Post = ({
           {post.contents}
           <div className="summary">
             {/* viewCount로 바꾸기 */}
-            <p className="view">조회 {"30"}</p>
+            <p className="view">조회 {post.postViewCount}</p>
             <p className="댓글">댓글 {post.commentSize}</p>
           </div>
         </div>

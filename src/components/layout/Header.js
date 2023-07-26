@@ -6,6 +6,7 @@ import Search from "../search/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/modules/user";
 import { useEffect } from "react";
+import { basicAlert } from "../../shared/alert/SwalAlert";
 
 const Header = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -31,7 +32,8 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logoutUser());
     localStorage.removeItem("Access");
-    localStorage.removeItem("Refresh");
+    basicAlert("로그아웃 되었습니다.");
+    navigate("/");
   };
 
   useEffect(() => {

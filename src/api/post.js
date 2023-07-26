@@ -32,7 +32,8 @@ export const likePost = async (postId) => {
 };
 
 export const addPost = async (FormData) => {
+  console.log(FormData);
   const api = addInstance();
-  const res = await api.post("/posts", FormData);
+  const res = await api.post("/api/posts", FormData);
   return res;
 };
