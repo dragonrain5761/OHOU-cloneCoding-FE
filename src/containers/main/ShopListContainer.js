@@ -18,8 +18,6 @@ const ShopListContainer = ({ searchItems }) => {
 
   const { data, isLoading, isError } = useItemsQuery(SIZE, currentPage);
 
-  console.log(isError);
-
   useEffect(() => {
     if (currentPage <= MAXPAGE - 1) {
       const nextPage = currentPage + 1;
@@ -44,7 +42,6 @@ const ShopListContainer = ({ searchItems }) => {
     setCurrentPage((prev) => prev - 1);
   };
 
-  console.log(data);
   return (
     <ShopListContainerBlock>
       <h1>오늘의딜 👍</h1>

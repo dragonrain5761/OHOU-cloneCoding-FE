@@ -19,14 +19,6 @@ const PostContainer = ({ postId }) => {
   const likeMutate = useLikePostMutation();
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
-  useEffect(() => {
-    // 접근 권한이 없는 페이지에 접근 시 로그인 경고를 띄우기
-    if (!isLoggedIn) {
-      navigate("/login");
-      basicAlert("로그인이 필요합니다.");
-    }
-  }, [isLoggedIn]);
-
   const onClickToUpdate = () => {
     navigate(`/edit/${postId}`);
   };
