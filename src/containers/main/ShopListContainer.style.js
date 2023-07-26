@@ -1,10 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../lib/styles/theme";
 
 const ShopListContainerBlock = styled.div`
   ${theme.flexCenterColumn}
   max-width: 1050px;
   padding: 0px 20px;
+  ${(props) =>
+    props.searchItems &&
+    css`
+      margin-top: 10rem;
+      margin-bottom: 8rem;
+    `}
   h1 {
     width: 100%;
     margin-left: 50px;

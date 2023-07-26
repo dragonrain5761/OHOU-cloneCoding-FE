@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "../../components/common/";
-import axios from "axios";
 import ShopListItem from "../../components/main/ShopListItem";
 import { ItemQueryKey, useItemsQuery } from "../../hooks/apis/useItemsQuery";
 import { useNavigate } from "react-router-dom";
 import ShopListContainerBlock from "./ShopListContainer.style";
 import { getItems } from "../../api/item";
 
-const ShopListContainer = ({ searchItems }) => {
+const ShopListContainer = ({
+  searchItems,
+  keyword,
+  currentPageSearch,
+  onIncreaseSearch,
+  onDecreaseSearch,
+}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -34,38 +39,73 @@ const ShopListContainer = ({ searchItems }) => {
     navigate(`/item/${id}`);
   };
 
-  const onIncreasePage = () => {
+  const onIncreaseHome = () => {
     setCurrentPage((prev) => prev + 1);
   };
 
-  const onDecreasePage = () => {
+  const onDecreaseHome = () => {
     setCurrentPage((prev) => prev - 1);
   };
 
   return (
-    <ShopListContainerBlock>
-      <h1>오늘의딜 👍</h1>
+    <ShopListContainerBlock searchItems={searchItems}>
+      {searchItems ? (
+        <>
+          <h1>{`"${keyword}" 검색 결과 🔍`}</h1>
+        </>
+      ) : (
+        <h1>오늘의딜 👍</h1>
+      )}
       <ul className="postsContainer">
-        {data.data.content.map((item) => (
-          <li key={item.itemId} onClick={() => onClickHandler(item.itemId)}>
-            <ShopListItem item={item} />
-          </li>
-        ))}
+        {searchItems
+          ? searchItems.map((item) => (
+              <li key={item.itemId} onClick={() => onClickHandler(item.itemId)}>
+                <ShopListItem item={item} />
+              </li>
+            ))
+          : data.data.content.map((item) => (
+              <li key={item.itemId} onClick={() => onClickHandler(item.itemId)}>
+                <ShopListItem item={item} />
+              </li>
+            ))}
       </ul>
+      {searchItems?.length === 0 && <p>검색 결과 없음</p>}
       <div className="pagination">
-        <Button
-          size={"xsmall"}
-          disabled={currentPage <= 0}
-          onClick={onDecreasePage}>
-          <FaChevronLeft />
-        </Button>
-        <div className="pages">{`${currentPage + 1}/${MAXPAGE - 1}`}</div>
-        <Button
-          size={"xsmall"}
-          disabled={currentPage >= MAXPAGE}
-          onClick={onIncreasePage}>
-          <FaChevronRight />
-        </Button>
+        {searchItems ? (
+          <>
+            <Button
+              size={"xsmall"}
+              disabled={currentPageSearch <= 0}
+              onClick={onDecreaseSearch}>
+              <FaChevronLeft />
+            </Button>
+            <div className="pages">{`${currentPageSearch + 1}/${
+              MAXPAGE - 1
+            }`}</div>
+            <Button
+              size={"xsmall"}
+              disabled={currentPageSearch >= MAXPAGE}
+              onClick={onIncreaseSearch}>
+              <FaChevronRight />
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button
+              size={"xsmall"}
+              disabled={currentPage <= 0}
+              onClick={onDecreaseHome}>
+              <FaChevronLeft />
+            </Button>
+            <div className="pages">{`${currentPage + 1}/${MAXPAGE - 1}`}</div>
+            <Button
+              size={"xsmall"}
+              disabled={currentPage >= MAXPAGE}
+              onClick={onIncreaseHome}>
+              <FaChevronRight />
+            </Button>
+          </>
+        )}
       </div>
     </ShopListContainerBlock>
   );
