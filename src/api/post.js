@@ -3,13 +3,13 @@ import { authInstance, defaultInstance, addInstance } from "./axios";
 export const getPosts = async (size, page) => {
   const api = defaultInstance();
   const params = { size, page };
-  const res = await api.get("/api/posts", { params }); //파라미터로 전달 확인
+  const res = await api.get("/api/posts/home", { params }); //파라미터로 전달 확인
   return res;
 };
 
 export const getPost = async (postId) => {
   const api = authInstance();
-  const res = await api.get(`/api/posts/${postId}`);
+  const res = await api.get(`/api/posts/detail/${postId}`);
   return res;
 };
 

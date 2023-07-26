@@ -4,7 +4,8 @@ import profileSrc from "../../assets/profile.png";
 import PostListItemBlock from "./PostListItem.style";
 
 const PostListItem = ({ post }) => {
-  const { nickname, contents, postImg, commentSize, likeSize } = post;
+  const { nickname, content, postImg, commentSize, likeSize, postViewCount } =
+    post;
   return (
     <PostListItemBlock>
       <div className="profile">
@@ -22,11 +23,10 @@ const PostListItem = ({ post }) => {
           <span>{commentSize}</span>
         </div>
         <div className="view">
-          {/* 조회수 구현 */}
-          <span>{" 조회 189"}</span>
+          <span>조회 {postViewCount}</span>
         </div>
       </div>
-      <p className="contents">{contents}</p>
+      <p className="contents">{content}</p>
     </PostListItemBlock>
   );
 };

@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import MainPage from "../pages/pages/MainPage";
 import SearchPage from "../pages/pages/SearchPage";
 import ProductPage from "../pages/pages/ProductPage";
@@ -8,9 +14,10 @@ import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import PostPage from "../pages/pages/PostPage";
 import Template from "../containers/layout/Template";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loginUser } from "../redux/modules/user";
+import { basicAlert } from "./alert/SwalAlert";
 
 const Router = () => {
   const dispatch = useDispatch();
@@ -39,14 +46,7 @@ const Router = () => {
             </Template>
           }
         />
-        <Route
-          path="/post/:postId"
-          element={
-            <Template header footer>
-              <PostPage />
-            </Template>
-          }
-        />
+
         <Route
           path="/item/:itemId"
           element={
@@ -63,24 +63,36 @@ const Router = () => {
             </Template>
           }
         />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route
-          path="/write"
-          element={
-            <Template footer>
-              <WritePage />
-            </Template>
-          }
-        />
-        <Route
-          path="/edit/:postId"
-          element={
-            <Template header footer>
-              <WritePage />
-            </Template>
-          }
-        />
+        <Route element={<AuthRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Route>
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="/write"
+            element={
+              <Template footer>
+                <WritePage />
+              </Template>
+            }
+          />
+          <Route
+            path="/post/:postId"
+            element={
+              <Template header footer>
+                <PostPage />
+              </Template>
+            }
+          />
+          <Route
+            path="/edit/:postId"
+            element={
+              <Template header footer>
+                <WritePage />
+              </Template>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
@@ -88,4 +100,17 @@ const Router = () => {
 
 export default Router;
 
-//권한별 페이지 라우팅 컴포넌트 필요
+const PrivateRoute = () => {
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  if (isLoggedIn) return <Outlet />;
+  else {
+    basicAlert("로그인이 필요합니다.");
+    return <Navigate to="/login" />;
+  }
+};
+
+const AuthRoute = () => {
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  return isLoggedIn ? <Navigate to="/" /> : <Outlet />;
+};

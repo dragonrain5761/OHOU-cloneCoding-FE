@@ -10,14 +10,15 @@ export const postComment = async (data) => {
 };
 
 export const deleteComment = async (data) => {
-  console.log(data);
   const [postId, commentId] = data;
   const api = authInstance();
   const res = await api.delete(`/api/posts/${postId}/comments/${commentId}`);
   return res;
 };
 
-export const likeComment = async (postId, commentId) => {
+export const likeComment = async (data) => {
+  const [postId, commentId] = data;
+  console.log(data);
   const api = authInstance();
   const res = await api.post(`/api/posts/${postId}/comments/${commentId}/like`);
   return res;
