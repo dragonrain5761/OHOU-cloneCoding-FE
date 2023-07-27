@@ -10,15 +10,21 @@ import PostListContainerBlock from "./PostListContainer.style";
 
 const PostListContainer = () => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [maxPage, setMaxPage] = useState(0);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const MAXPAGE = 10;
   const SIZE = 8;
 
   const { data, isLoading, isError } = usePostsQuery(SIZE, currentPage);
 
   useEffect(() => {
-    if (currentPage <= MAXPAGE - 1) {
+    if (data) {
+      setMaxPage(data?.data.totalPages);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (currentPage <= maxPage - 1) {
       const nextPage = currentPage + 1;
       queryClient.prefetchQuery([PostsQueryKey, currentPage], nextPage, () => {
         getPosts(SIZE, nextPage);
@@ -62,10 +68,10 @@ const PostListContainer = () => {
           onClick={onDecreasePage}>
           <FaChevronLeft />
         </Button>
-        <div className="pages">{`${currentPage + 1}/${MAXPAGE - 1}`}</div>
+        <div className="pages">{`${currentPage + 1}/${maxPage}`}</div>
         <Button
           size={"xsmall"}
-          disabled={currentPage >= MAXPAGE}
+          disabled={currentPage >= maxPage - 1}
           onClick={onIncreasePage}>
           <FaChevronRight />
         </Button>

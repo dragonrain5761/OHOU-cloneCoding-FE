@@ -16,15 +16,22 @@ const ShopListContainer = ({
   onDecreaseSearch,
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
+  const [maxPage, setMaxPage] = useState(0);
+
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const MAXPAGE = 10;
   const SIZE = 8;
 
   const { data, isLoading, isError } = useItemsQuery(SIZE, currentPage);
 
   useEffect(() => {
-    if (currentPage <= MAXPAGE - 1) {
+    if (data) {
+      setMaxPage(data?.data.totalPages);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (currentPage <= maxPage - 1) {
       const nextPage = currentPage + 1;
       queryClient.prefetchQuery([ItemQueryKey, currentPage], nextPage, () => {
         getItems(SIZE, nextPage);
@@ -79,12 +86,10 @@ const ShopListContainer = ({
               onClick={onDecreaseSearch}>
               <FaChevronLeft />
             </Button>
-            <div className="pages">{`${currentPageSearch + 1}/${
-              MAXPAGE - 1
-            }`}</div>
+            <div className="pages">{`${currentPageSearch + 1}/${maxPage}`}</div>
             <Button
               size={"xsmall"}
-              disabled={currentPageSearch >= MAXPAGE}
+              disabled={currentPageSearch >= maxPage - 1}
               onClick={onIncreaseSearch}>
               <FaChevronRight />
             </Button>
@@ -97,10 +102,10 @@ const ShopListContainer = ({
               onClick={onDecreaseHome}>
               <FaChevronLeft />
             </Button>
-            <div className="pages">{`${currentPage + 1}/${MAXPAGE - 1}`}</div>
+            <div className="pages">{`${currentPage + 1}/${maxPage}`}</div>
             <Button
               size={"xsmall"}
-              disabled={currentPage >= MAXPAGE}
+              disabled={currentPage >= maxPage - 1}
               onClick={onIncreaseHome}>
               <FaChevronRight />
             </Button>

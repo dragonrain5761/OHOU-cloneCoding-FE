@@ -13,8 +13,8 @@ export default Button;
 
 const sizes = {
   xsmall: css`
-    height: 38px;
-    width: 38px;
+    height: 39px;
+    width: 39px;
   `,
   small: css`
     height: 38px;

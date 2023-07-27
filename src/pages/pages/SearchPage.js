@@ -10,7 +10,7 @@ import { getSearchItems } from "../../api/item";
 import ShopListContainer from "../../containers/main/ShopListContainer";
 
 const SearchPage = () => {
-  const MAXPAGE = 10; // 더 알아보쟈
+  const MAXPAGE = 10;
   const SIZE = 12;
   const { keyword } = useParams();
   const [currentPage, setCurrentPage] = useState(0);
