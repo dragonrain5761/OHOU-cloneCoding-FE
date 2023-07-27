@@ -9,7 +9,7 @@ export const usePostsQuery = (size, currentPage) => {
     () => getPosts(size, currentPage),
     {
       staleTime: 3000,
-      keepPreviousData: true, //지난 데이터도 캐싱유지
+      keepPreviousData: true,
     },
   );
 };

@@ -31,16 +31,14 @@ const Register = ({
                 className="emailInput"
                 placeholder="이메일"
                 value={formData.email}
-                onChange={handleChange}
-              ></input>
+                onChange={handleChange}></input>
             </span>
             <span className="emailSeparator">@</span>
             <span>
               <select
                 className="emailSelect"
                 value={formData.emailSelect}
-                onChange={handleEmailSelect}
-              >
+                onChange={handleEmailSelect}>
                 <option value="" disabled>
                   선택해주세요
                 </option>
@@ -59,8 +57,7 @@ const Register = ({
             <button
               className="emailButton"
               name="emailAuth"
-              onClick={handleMailCheck}
-            >
+              onClick={handleMailCheck}>
               이메일 인증하기
             </button>
             {sentEmail && (
@@ -70,9 +67,7 @@ const Register = ({
                   className="emailCheck"
                   placeholder="인증번호"
                   value={emailCheck}
-                  onChange={onChangeEmailCheck}
-                ></input>
-                {/* 다르면 튕기게 하기 */}
+                  onChange={onChangeEmailCheck}></input>
                 <button className="emailCheckButton" onClick={onCheckEmail}>
                   확인
                 </button>
@@ -92,8 +87,7 @@ const Register = ({
             className="pwInput"
             placeholder="비밀번호"
             value={formData.password}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
           <br></br>
           {passwordError && <div className="error">{passwordError}</div>}
         </div>
@@ -106,8 +100,7 @@ const Register = ({
             className="pwInput"
             placeholder="비밀번호 확인"
             value={formData.pwCheck}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
           <br></br>
           {passwordError && <div className="error">{passwordError}</div>}
         </div>
@@ -123,8 +116,7 @@ const Register = ({
             className="nameInput"
             placeholder="별명 (2~14자)"
             value={formData.nickname}
-            onChange={handleChange}
-          ></input>
+            onChange={handleChange}></input>
           <br></br>
           {nicknameError && <div className="error">{nicknameError}</div>}
         </div>

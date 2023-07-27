@@ -7,7 +7,7 @@ import {
   StarContainer,
   PriceContainer,
   InfoContainer,
-  OrderContainer
+  OrderContainer,
 } from "./Product.style";
 
 const Product = ({
@@ -17,15 +17,14 @@ const Product = ({
   onClickPurchaseButton,
   onClickCartButton,
   onChangeOption,
-  onChangeMoreItem
-  }) => {
+  onChangeMoreItem,
+}) => {
   const { itemName, itemTitle, price, itemImg } = item;
 
   return (
     <StyledProduct>
       <ImageWrapper>
         <img src={itemImg} alt="" />
-        {/* <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/descriptions/url/168963869950419934.jpg" alt="" /> */}
       </ImageWrapper>
 
       <div>
@@ -72,33 +71,25 @@ const Product = ({
         </div>
 
         <OrderContainer>
-          <select
-            onChange={onChangeOption}
-          >
+          <select onChange={onChangeOption}>
             {options.map((option, index) => (
-              <option value={index} key={index}>{option}</option>
+              <option value={index} key={index}>
+                {option}
+              </option>
             ))}
           </select>
 
-          <select
-            onChange={onChangeMoreItem}
-          >
+          <select onChange={onChangeMoreItem}>
             {moreItems.map((item, index) => (
-              <option value={index} key={index}>{item}</option>
+              <option value={index} key={index}>
+                {item}
+              </option>
             ))}
           </select>
 
           <div>
-            <button
-              onClick={onClickCartButton}
-            >
-              장바구니
-            </button>
-            <button
-              onClick={onClickPurchaseButton}
-            >
-              바로구매
-            </button>
+            <button onClick={onClickCartButton}>장바구니</button>
+            <button onClick={onClickPurchaseButton}>바로구매</button>
           </div>
         </OrderContainer>
       </div>
