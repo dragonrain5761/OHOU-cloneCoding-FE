@@ -38,7 +38,7 @@ const Comments = ({
               </div>
               <div className="contents">{comment.comment}</div>
               <div className="menu">
-                {comment.createdAt}
+                {comment.createdAt.slice(0, 10)}
                 <div className="likeComment">
                   <p
                     className="like"
