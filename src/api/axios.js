@@ -3,7 +3,6 @@ import axios from "axios";
 const defaultInstance = () => {
   const instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
-    // withCredentials: true,
   });
   return instance;
 };
@@ -37,13 +36,12 @@ const authInstance = () => {
       console.log("refresh token 만료");
       window.location.href = "/login";
 
-      return Promise.reject(error); // 그 외 에러 반환
+      return Promise.reject(error);
     },
   );
   return instance;
 };
 
-//토큰 확인 필요
 const addInstance = () => {
   const Access = localStorage.getItem("Access");
   const instance = axios.create({
@@ -51,7 +49,6 @@ const addInstance = () => {
     headers: {
       Access: `Bearer ${Access}`,
       "Content-Type": "multipart/form-data",
-      //Refresh: refresh
     },
   });
   console.log("instance", instance);

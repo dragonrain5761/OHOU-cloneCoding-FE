@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../assets/transparent-logo.png";
-import Input, { StyledInput } from "../common/Input";
 import { Link } from "react-router-dom";
 
 const Login = ({ formData, handleChange, handleSubmit }) => {

@@ -18,7 +18,7 @@ const ShopListContainer = ({
   const [currentPage, setCurrentPage] = useState(0);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const MAXPAGE = 10; // 더 알아보쟈
+  const MAXPAGE = 10;
   const SIZE = 8;
 
   const { data, isLoading, isError } = useItemsQuery(SIZE, currentPage);
