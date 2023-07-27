@@ -11,27 +11,28 @@ import {
 import {
   usePostQuery
 } from "../../hooks/apis/usePostQuery";
-import axios from "axios";
+// import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { basicAlert } from "../../shared/alert/SwalAlert";
+import { editPost } from "../../api/post";
 
 const EditContainer = () => {
-  const editPost = async (editItem) => {
-    const Access = localStorage.getItem("Access");
-    const Refresh = localStorage.getItem("Refresh");
+  // const editPost = async (editItem) => {
+  //   const Access = localStorage.getItem("Access");
+  //   const Refresh = localStorage.getItem("Refresh");
 
-    await axios.put(
-      `${process.env.REACT_APP_API_URL}/api/posts/${editItem.id}`,
-      editItem.content,
-      { 
-        headers: {
-          Access: `Bearer ${Access}`,
-          Refresh: `Bearer ${Refresh}`,
-        },
-        withCrentials: true
-      }
-    );
-  }
+  //   await axios.put(
+  //     `${process.env.REACT_APP_API_URL}/api/posts/${editItem.id}`,
+  //     editItem.content,
+  //     { 
+  //       headers: {
+  //         Access: `Bearer ${Access}`,
+  //         Refresh: `Bearer ${Refresh}`,
+  //       },
+  //       withCrentials: true
+  //     }
+  //   );
+  // }
   const params = useParams();
   const { data, isLoading, isError } = usePostQuery(params.postId);
   const prevContent = data?.data.content;

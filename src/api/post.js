@@ -1,4 +1,4 @@
-import { authInstance, defaultInstance, addInstance } from "./axios";
+import { authInstance, defaultInstance, addInstance, editInstance } from "./axios";
 
 export const getPosts = async (size, page) => {
   const api = defaultInstance();
@@ -35,5 +35,12 @@ export const addPost = async (FormData) => {
   console.log(FormData);
   const api = addInstance();
   const res = await api.post("/api/posts", FormData);
+  return res;
+};
+
+export const editPost = async (editItem) => {
+  console.log(editItem);
+  const api = editInstance();
+  const res = await api.put(`/api/posts/${editItem.id}`, editItem.content);
   return res;
 };
