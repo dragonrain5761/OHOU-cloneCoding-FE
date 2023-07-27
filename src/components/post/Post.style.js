@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 const PostBlock = styled.div`
   width: 100%;
   max-width: 1020px;
+  min-height: 700px;
   .detail {
     ${theme.flexCenterColumn}
     position: relative;
