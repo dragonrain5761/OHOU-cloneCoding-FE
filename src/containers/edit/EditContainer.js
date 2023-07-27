@@ -13,6 +13,7 @@ import {
 } from "../../hooks/apis/usePostQuery";
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
+import { basicAlert } from "../../shared/alert/SwalAlert";
 
 const EditContainer = () => {
   const editPost = async (editItem) => {
@@ -41,10 +42,16 @@ const EditContainer = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation(editPost, {
     onSuccess: () => {
-      queryClient.invalidateQueries("post")
-      console.log("Edited post successfully!")
+      basicAlert("게시글 수정 성공!").then(() => {
+        navigate("/");
+      });
+      queryClient.invalidateQueries("post");
+      console.log("Edited post successfully!");
+    },
+    onError: (error) => {
+      basicAlert("게시글 수정 실패!");
     }
-  })
+  });
 
   const onClickToHome = () => {
     navigate("/");
@@ -52,7 +59,7 @@ const EditContainer = () => {
 
   const onChangeContent = (e) => {
     setContent(e.target.value);
-  }
+  };
 
   const onChangeImage = (e) => {
     console.log(e.target.files[0]);
