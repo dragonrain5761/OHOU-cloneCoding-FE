@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const StyledProduct = styled.div`
+  width: 100%;
   display: flex;
   margin-bottom: 20px;
 
-  & > div:nth-of-type(2) {
-    width: calc(50% - 20px);
-    margin: 20px;
+  @media (max-width: 800px) {
+    display: block;
   }
 `;
 
@@ -25,6 +25,19 @@ export const ImageWrapper = styled.div`
   & img {
     position: absolute;
     width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+`;
+
+export const OverviewContainer = styled.div`
+  width: calc(50% - 20px);
+  margin: 20px;
+
+  @media (max-width: 800px) {
+    width: calc(100% - 40px);
   }
 `;
 
@@ -100,8 +113,12 @@ export const InfoContainer =styled.div`
     margin-bottom: 8px;
   }
 
+  & p:nth-of-type(1) {
+    color: #828c94;
+  }
+
   & p span {
-    margin-left: 8px;
+    margin: 8px 0 0 16px;
     display: block;
   }
 `;

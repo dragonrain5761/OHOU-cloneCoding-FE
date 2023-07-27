@@ -3,6 +3,7 @@ import imgTD from "../../assets/product/today-departure.png";
 import {
   StyledProduct,
   ImageWrapper,
+  OverviewContainer,
   TitleContainer,
   StarContainer,
   PriceContainer,
@@ -27,7 +28,7 @@ const Product = ({
         <img src={itemImg} alt="" />
       </ImageWrapper>
 
-      <div>
+      <OverviewContainer>
         <div>
           <TitleContainer>
             <p>{itemName}</p>
@@ -92,7 +93,7 @@ const Product = ({
             <button onClick={onClickPurchaseButton}>바로구매</button>
           </div>
         </OrderContainer>
-      </div>
+      </OverviewContainer>
     </StyledProduct>
   );
 };
