@@ -10,9 +10,6 @@ const Footer = () => {
     navigate("/help");
   };
 
-  const onClickToGit = () => {
-    navigate("/https://github.com/orgs/OHOU-cloneCoding/repositories");
-  };
   return (
     <FooterBlock>
       <div className="emailHelp" onClick={onClickToHelp}>

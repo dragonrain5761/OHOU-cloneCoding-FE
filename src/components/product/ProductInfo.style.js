@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
 export const StyledProductInfo = styled.div`
+  width: 100%;
   display: flex;
+  padding: 20px;
+
+  @media (max-width: 800px) {
+    display: block;
+  }
 `;
 
 export const ProductInfoInner = styled.div`
@@ -17,6 +23,10 @@ export const ProductInfoInner = styled.div`
   & div {
     font-size: 16px;
     margin-bottom: 12px;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
   }
 `;
 

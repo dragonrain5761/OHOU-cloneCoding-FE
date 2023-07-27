@@ -2,13 +2,25 @@ import styled from "styled-components";
 import theme from "../../lib/styles/theme";
 
 const PostListItemBlock = styled.div`
-  margin-top: 1rem;
-  .postImg {
-    width: 95%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
+  margin: 2.3rem 0rem;
+  .postImgWrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: 7px;
+    .postImg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+    }
   }
+
   .profile {
     height: 45px;
     width: 100%;
@@ -46,7 +58,8 @@ const PostListItemBlock = styled.div`
   .contents {
     max-width: 250px;
     max-height: 110px;
-    font-size: 0.75rem;
+    padding: 0px 10px;
+    font-size: 0.85rem;
     color: ${theme.darkGrayColor};
     line-height: 1.3;
     overflow: hidden;
