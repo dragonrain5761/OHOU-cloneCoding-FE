@@ -3,6 +3,7 @@ import src from "../../assets/logo.jpg";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addPost } from "../../api/post";
 import { useNavigate } from "react-router-dom";
+import { basicAlert } from "../../shared/alert/SwalAlert";
 import { useState, useRef } from "react";
 import {
   StyledHeader,
@@ -38,9 +39,15 @@ const WriteContainer = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation(addPost, {
     onSuccess: () => {
+      basicAlert("게시글 업로드 성공!").then(() => {
+        navigate("/");
+      });
       queryClient.invalidateQueries("post");
       console.log("Added post successfully!");
     },
+    onError: (error) => {
+      basicAlert("게시글 업로드 실패!");
+    }
   });
 
   const onClickToHome = () => {

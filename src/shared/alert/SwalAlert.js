@@ -13,6 +13,9 @@ export const confirmAlert = (title, btn, successText) =>
     cancelButtonColor: "#d33",
     confirmButtonText: btn,
     cancelButtonText: "취소",
+    customClass: {
+      popup: "my-popup",
+    },
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire(successText, "success");
