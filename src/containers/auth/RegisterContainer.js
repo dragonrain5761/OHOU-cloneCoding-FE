@@ -120,7 +120,7 @@ const RegisterContainer = () => {
     try {
       await registerMutate(formData);
       basicAlert("회원가입이 완료되었습니다!");
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       basicAlert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
