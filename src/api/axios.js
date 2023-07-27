@@ -51,7 +51,29 @@ const addInstance = () => {
       "Content-Type": "multipart/form-data",
     },
   });
-  console.log("instance", instance);
+
+  instance.interceptors.response.use(
+    (res) => {
+      if (res.headers.accesstokenerror) {
+        localStorage.setItem(
+          "Access",
+          res.headers.access.replace("Bearer ", ""),
+        );
+      }
+      return res;
+    },
+    async (error) => {
+      //refresh token만료
+      console.log(error);
+      localStorage.removeItem("Access");
+      localStorage.removeItem("Refresh");
+      console.log("refresh token 만료");
+      window.location.href = "/login";
+
+      return Promise.reject(error);
+    },
+  );
+
   return instance;
 };
 
