@@ -22,7 +22,6 @@ const RegisterContainer = () => {
   const [authCode, setAuthCode] = useState(null);
   const [emailVerified, setEmailVerified] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-  const [pwCheckError, setPwCheckError] = useState("");
   const [nicknameError, setNicknameError] = useState("");
   const registerMutate = useSignupMutation();
   const mailCheckMutate = useMailCheckMutation();
@@ -72,7 +71,7 @@ const RegisterContainer = () => {
       const response = await mailCheckMutate.mutateAsync({
         email: `${formData.email}@${formData.emailSelect}`,
       });
-      setAuthCode((prev) => response.data); //또는 response
+      setAuthCode((prev) => response.data);
       console.log(response);
     } catch (err) {
       console.log(err);
@@ -123,7 +122,6 @@ const RegisterContainer = () => {
       basicAlert("회원가입이 완료되었습니다!");
       navigate("/");
     } catch (error) {
-      // console.error("회원가입 실패:", error);
       basicAlert("회원가입에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -139,8 +137,7 @@ const RegisterContainer = () => {
           className="RegisterImg"
           src={logo}
           alt="register"
-          onClick={onClickLogo}
-        ></img>
+          onClick={onClickLogo}></img>
         <div className="registerBox">
           <label className="registerlabel">회원가입</label>
           <Register

@@ -1,7 +1,7 @@
 import { defaultInstance } from "./axios";
 const api = defaultInstance();
 
-// 회원가입 요청을 보내는 함수
+// 회원가입
 export const signup = async ({
   email,
   emailSelect,
@@ -20,7 +20,7 @@ export const signup = async ({
   return response.data;
 };
 
-// 로그인 요청을 보내는 함수
+// 로그인
 export const login = async ({ email, password }) => {
   const response = await api.post("/api/auth/login", { email, password });
   const Access = response.headers.access.replace("Bearer ", "");

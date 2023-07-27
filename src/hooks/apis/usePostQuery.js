@@ -1,7 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deletePost, getPost, likePost, updatePost } from "../../api/post";
+import { PostsQueryKey } from "./usePostsQuery";
 
 export const PostQueryKey = "post";
+//게시물 가져오기
 export const usePostQuery = (postId) => {
   return useQuery([PostQueryKey, postId], () => getPost(postId), {
     enabled: !!postId,
@@ -10,6 +12,7 @@ export const usePostQuery = (postId) => {
   });
 };
 
+//게시물 수정
 export const useUpdatePostMutation = () => {
   const queryClient = useQueryClient();
 
@@ -21,16 +24,22 @@ export const useUpdatePostMutation = () => {
   return mutate;
 };
 
+//게시물 삭제
 export const useDeletePostMutation = () => {
-  const { mutate } = useMutation(deletePost);
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation(deletePost, {
+    onSuccess: (data) => {
+      queryClient.invalidateQueries([PostsQueryKey]); //전체 포스트 조회 query key로 invalidate ("/")
+    },
+  });
   return mutate;
 };
 
+//게시물 좋아요
 export const useLikePostMutation = () => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation(likePost, {
-    //바로 상태 반영?
-
     onSuccess: () => {
       queryClient.invalidateQueries([PostQueryKey]);
     },

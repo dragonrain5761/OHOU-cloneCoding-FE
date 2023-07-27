@@ -1,4 +1,3 @@
-import React from "react";
 import sale from "../../assets/sale.png";
 import ShopListItemBlock from "./ShopListItem.style";
 

@@ -10,7 +10,6 @@ export const RegisterBlock = styled.section`
     width: 360px;
     margin: 0px auto;
     padding: 60px 0px;
-    /* border: 1px solid ${(props) => props.theme.mediumGrayColor}; */
 
     > div {
       margin: 30px auto 30px 0;
